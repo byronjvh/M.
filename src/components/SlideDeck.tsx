@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
+import HeroSlide from "./slides/HeroSlide";
+import ServicesSlide from "./slides/ServicesSlide";
 
 const slides = [
     {
-        id: 1,
+        id: "hero",
         color: "#009982",
-        title: "SLIDE 1",
+        content: <HeroSlide />,
     },
     {
-        id: 2,
+        id: "services",
         color: "#3155FF",
-        title: "SLIDE 2",
+        content: <ServicesSlide />,
     },
 ];
 
@@ -66,10 +68,10 @@ export default function SlideDeck() {
                         }}
                         transition={{
                             duration: 0.5,
-                            ease: [0.22, 1, 0.36, 1],
+                            ease: [0.65, 0, 0.35, 1],
                         }}
                     >
-                        <h1>{slide.title}</h1>
+                        {slide.content}
                     </motion.section>
                 );
             })}
