@@ -7,11 +7,13 @@ const slides = [
     {
         id: "hero",
         color: "#009982",
+        name: "Hero",
         content: <HeroSlide />,
     },
     {
         id: "services",
         color: "#3155FF",
+        name: "Services",
         content: <ServicesSlide />,
     },
 ];
@@ -56,7 +58,7 @@ export default function SlideDeck() {
                 return (
                     <motion.section
                         key={slide.id}
-                        className="slide"
+                        className={`slide slide-${slide.name.toLowerCase()}`}
                         style={{
                             backgroundColor: slide.color,
                             zIndex: isPrevious ? 20 : slides.length - index,
@@ -71,7 +73,9 @@ export default function SlideDeck() {
                             ease: [0.65, 0, 0.35, 1],
                         }}
                     >
-                        {slide.content}
+                        <div className="slide-content">
+                            {slide.content}
+                        </div>
                     </motion.section>
                 );
             })}
