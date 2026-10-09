@@ -1,5 +1,15 @@
+import { motion } from "motion/react";
+
 export default function Poop({ size = 200 }: { size?: number }) {
-    return <svg
+    return <motion.svg
+        animate={{
+            rotate: [-2.5, 2.5, -2.5],
+        }}
+        transition={{
+            duration: 3,
+            repeat: Infinity,
+            ease: "easeInOut",
+        }}
         className="poop"
         xmlns="http://www.w3.org/2000/svg"
         width={`${size}px`}
@@ -17,5 +27,5 @@ export default function Poop({ size = 200 }: { size?: number }) {
         <ellipse fill="#292F33" cx="23" cy="15.5" rx="2" ry="2.5" />
         <path strokeWidth="2" fill="#292F33" d="M9.447 24.895C9.201 24.402 9.45 24 10 24h18c.55 0 .799.402.553.895C28.553 24.895 26 30 19 30s-9.553-5.105-9.553-5.105z" />
         <path fill="#F2ABBA" d="M19 26c-2.771 0-5.157.922-6.292 2.256C14.2 29.211 16.253 30 19 30s4.801-.789 6.292-1.744C24.157 26.922 21.771 26 19 26z" />
-    </svg>
+    </motion.svg>
 }

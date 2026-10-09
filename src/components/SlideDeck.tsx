@@ -18,17 +18,15 @@ const slides = [
     },
 ];
 
-export default function SlideDeck() {
-    const [currentSlide, setCurrentSlide] = useState(0);
-
+export default function SlideDeck({ currentSlide, setCurrentSlide }: { currentSlide: number, setCurrentSlide: Function }) {
     const nextSlide = () => {
-        setCurrentSlide((current) =>
+        setCurrentSlide((current: number) =>
             Math.min(current + 1, slides.length - 1)
         );
     };
 
     const previousSlide = () => {
-        setCurrentSlide((current) =>
+        setCurrentSlide((current: number) =>
             Math.max(current - 1, 0)
         );
     };

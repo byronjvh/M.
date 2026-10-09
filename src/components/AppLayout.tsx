@@ -1,25 +1,28 @@
+import { useState } from "react";
+import MenuCircle from "./MenuCircle";
 import SlideDeck from "./SlideDeck";
+import SlideIndicator from "./SlideIndicator";
+import { motion } from "motion/react"
+import Navbar from "./NavBar";
 
 export default function AppLayout() {
+    const [currentSlide, setCurrentSlide] = useState<number>(0);
+
     return (
         <div className="layout">
-            <header className="layout-header">
-                <div className="header-content">
-                    <a href="/"><img className="logo" src="/logo.svg" alt="logo" /></a>
-                    <nav className="nav">
-                        <a className="nav-link" href="/#services">Cómo funciona</a>
-                        <a className="nav-link" href="/#portfolio">Planes</a>
-                        <a className="nav-link" href="/#contact">Proyectos</a>
-                        <a className="nav-link nav-button" href="/#contact">Cotizar</a>
-                    </nav>
-                </div>
-            </header>
+            <Navbar currentSlide={currentSlide} />
+            {/* <button className="menu-button">
+                        <MenuCircle />
+                    </button> */}
 
             <main className="content">
-                <SlideDeck />
+                <SlideDeck
+                    currentSlide={currentSlide}
+                    setCurrentSlide={setCurrentSlide}
+                />
             </main>
 
-            <span>01 / 06</span>
-        </div>
+            <SlideIndicator currentSlide={currentSlide + 1} totalSlides={6} />
+        </div >
     );
 }
