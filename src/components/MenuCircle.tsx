@@ -1,28 +1,38 @@
-import { motion } from "motion/react"
+import { motion, useAnimate } from "motion/react";
+import { useEffect, useRef } from "react";
 
 export default function MenuCircle() {
-    return (
-        <motion.svg
-            initial={{ rotate: 0 }}
-            animate={{ rotate: 360 }}
-            transition={{
+    const [scope, animate] = useAnimate<SVGSVGElement>();
+    const animationRef = useRef<ReturnType<typeof animate> | null>(null);
+
+    useEffect(() => {
+        animationRef.current = animate(
+            scope.current,
+            { rotate: 360 },
+            {
                 duration: 15,
                 ease: "linear",
-                repeat: Infinity
-            }}
+                repeat: Infinity,
+            }
+        );
+
+        return () => {
+            animationRef.current?.stop();
+        };
+    }, [animate, scope]);
+
+    return (
+        <motion.svg
+            ref={scope}
+            onHoverStart={() => animationRef.current?.pause()}
+            onHoverEnd={() => animationRef.current?.play()}
             width="90"
             height="90"
             viewBox="0 0 90 90"
-            preserveAspectRatio="xMidYMid meet"
             xmlns="http://www.w3.org/2000/svg"
             className="menu-circle"
         >
-            <circle
-                cx="45"
-                cy="45"
-                r="44"
-                fill="#121212"
-            />
+            <circle cx="45" cy="45" r="44" fill="#121212" />
 
             <defs>
                 <path
@@ -44,13 +54,10 @@ export default function MenuCircle() {
                 fontWeight="500"
                 letterSpacing="1.8"
             >
-                <textPath
-                    href="#text-circle"
-                    startOffset="0%"
-                >
+                <textPath href="#text-circle" startOffset="0%">
                     • COTIZAR POR WHATSAPP
                 </textPath>
             </text>
         </motion.svg>
-    )
+    );
 }

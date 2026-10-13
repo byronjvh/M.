@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
+import MenuCircle from "./MenuCircle";
 
 interface NavbarProps {
     currentSlide: number;
@@ -10,88 +11,49 @@ export default function Navbar({ currentSlide }: NavbarProps) {
     const [menuOpen, setMenuOpen] = useState(false);
 
     return (
-        <motion.header
-            className={`layout-header ${isMenuCircle ? "menu-circle-mode" : ""}`}
-            animate={{
-                width: isMenuCircle ? 90 : "100%",
-                height: isMenuCircle ? 90 : 80,
-                top: isMenuCircle ? 24 : 0,
-                right: isMenuCircle ? 24 : 0,
-                borderRadius: isMenuCircle ? "50%" : "0%",
-                backgroundColor: isMenuCircle
-                    ? "#121212"
-                    : "rgba(0, 0, 0, 0)",
-            }}
-            transition={{
-                duration: 0.7,
-                ease: [0.22, 1, 0.36, 1],
-            }}
-        >
+        <div className="navbar-container">
 
-            {/* HEADER DEFAULT */}
-            <motion.div
-                className="header-content"
-                initial={false}
+
+            <motion.header
+                initial={{ borderRadius: "20px" }}
                 animate={{
-                    opacity: isMenuCircle ? 0 : 1,
-                    scale: isMenuCircle ? 0 : 1,
+                    borderRadius: isMenuCircle ? "50px 0 50px 50px" : "0px 0 0px 0px",
+                    width: isMenuCircle ? "90px" : "",
+                    height: isMenuCircle ? "90px" : "",
+                    backgroundColor: isMenuCircle ? "#121212" : "rgba(0,0,0,0)",
+                    top: isMenuCircle ? 24 : 0,
+                    right: isMenuCircle ? 24 : 0
                 }}
                 transition={{
-                    duration: 0.3,
-                    ease: [0.22, 1, 0.36, 1],
-                }}
-            >
-                <a href="/">
-                    <img
-                        className="logo"
-                        src="/logo.svg"
-                        alt="logo"
-                    />
-                </a>
-
-                <nav className="nav">
-                    <a className="nav-link" href="/#services">
-                        Cómo funciona
-                    </a>
-
-                    <a className="nav-link" href="/#portfolio">
-                        Planes
-                    </a>
-
-                    <a className="nav-link" href="/#contact">
-                        Proyectos
-                    </a>
-
-                    <a className="nav-link nav-button" href="/#contact">
-                        Cotizar
-                    </a>
-                </nav>
-            </motion.div>
-
-
-            {/* HEADER DEL MENÚ */}
-            {isMenuCircle && (
-                <motion.div
-                    className="header-content"
-                    initial={{
-                        opacity: 0,
-                        scale: 0,
-                    }}
-                    animate={{
-                        opacity: menuOpen ? 1 : 0,
-                        scale: menuOpen ? 1 : 0,
-                    }}
-                    transition={{
+                    borderRadius: {
                         duration: 0.4,
-                        ease: [0.22, 1, 0.36, 1],
+                        ease: "easeOut",
+                    },
+                    type: "spring",
+                    stiffness: 200,
+                    damping: 25,
+                }}
+                className="navbar"
+            >
+
+                <motion.div
+                    animate={{
+                        height: isMenuCircle ? 0 : "100%",
+                        width: isMenuCircle ? 0 : "100%",
+                        opacity: isMenuCircle ? 0 : 1,
+                        right: isMenuCircle ? "100%" : ""
                     }}
+                    className={`header-content ${isMenuCircle ? "menu-circle" : ""}`}
                 >
-                    <nav
-                        className="nav"
-                        style={{
-                            flexDirection: "column",
-                        }}
-                    >
+                    <a href="/">
+                        <img
+                            className="logo"
+                            src="/logo.svg"
+                            alt="logo"
+                        />
+                    </a>
+
+                    <nav className="nav">
                         <a className="nav-link" href="/#services">
                             Cómo funciona
                         </a>
@@ -109,20 +71,25 @@ export default function Navbar({ currentSlide }: NavbarProps) {
                         </a>
                     </nav>
                 </motion.div>
-            )}
+                <AnimatePresence>
+                    {
+                        isMenuCircle && (
+                            <motion.span
+                                initial={{ scale: 0, opacity: 0 }}
+                                animate={{ scale: 1, opacity: 1 }}
+                                transition={{
+                                    duration: 0.5,
+                                    ease: "easeInOut"
+                                }}
+                            >
+                                <MenuCircle />
+                            </motion.span>
+                        )
+                    }
+                </AnimatePresence>
 
 
-            {/* BOTÓN CIRCULAR */}
-            {isMenuCircle && !menuOpen && (
-                <button
-                    className="menu-circle-button"
-                    onClick={() => setMenuOpen(true)}
-                    aria-label="Abrir menú"
-                >
-                    <span>+</span>
-                </button>
-            )}
-
-        </motion.header>
+            </motion.header>
+        </div>
     );
 }

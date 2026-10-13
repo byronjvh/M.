@@ -5,7 +5,7 @@ export default function AnimatedCardDark() {
             initial={{ opacity: 0, y: 50, rotate: 5, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{
-                duration: 0.8,
+                duration: 1,
                 ease: [.2, .6, 0.45, 1.25],
                 delay: 0.3,
             }}
