@@ -1,39 +1,70 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import MenuCircle from "./MenuCircle";
+import { ArrowUpRight } from "lucide-react";
 
 interface NavbarProps {
     currentSlide: number;
 }
+
+const NAVBAR_STATE = {
+    DEFAULT: "default",
+    CIRCLE: "circle",
+    OPEN: "open",
+} as const;
+
+type NavbarState = typeof NAVBAR_STATE[keyof typeof NAVBAR_STATE];
 
 export default function Navbar({ currentSlide }: NavbarProps) {
     const isMenuCircle = currentSlide > 0;
     const [menuOpen, setMenuOpen] = useState(false);
 
     return (
-        <div className="navbar-container">
+        <div className="navbar-container" style={{ cursor: isMenuCircle && !menuOpen ? "pointer" : "" }}>
 
 
             <motion.header
                 initial={{ borderRadius: "20px" }}
                 animate={{
-                    borderRadius: isMenuCircle ? "50px 0 50px 50px" : "0px 0 0px 0px",
-                    width: isMenuCircle ? "90px" : "",
-                    height: isMenuCircle ? "90px" : "",
+                    borderRadius: isMenuCircle ? "50px 0 50px 50px" : "0px",
+                    width: isMenuCircle
+                        ? menuOpen ? "200px" : "90px"
+                        : "",
+                    height: isMenuCircle
+                        ? menuOpen ? "320px" : "90px"
+                        : "",
                     backgroundColor: isMenuCircle ? "#121212" : "rgba(0,0,0,0)",
                     top: isMenuCircle ? 24 : 0,
-                    right: isMenuCircle ? 24 : 0
+                    right: isMenuCircle ? 24 : 0,
                 }}
                 transition={{
                     borderRadius: {
                         duration: 0.4,
                         ease: "easeOut",
                     },
-                    type: "spring",
-                    stiffness: 200,
-                    damping: 25,
+                    width: {
+                        type: "spring",
+                        stiffness: 200,
+                        damping: 25,
+                    },
+                    height: {
+                        type: "spring",
+                        stiffness: 200,
+                        damping: 25,
+                    },
+                    top: {
+                        type: "spring",
+                        stiffness: 200,
+                        damping: 25,
+                    },
+                    right: {
+                        type: "spring",
+                        stiffness: 200,
+                        damping: 25,
+                    },
                 }}
                 className="navbar"
+                onClick={() => isMenuCircle && setMenuOpen(prev => !prev)}
             >
 
                 <motion.div
@@ -53,7 +84,16 @@ export default function Navbar({ currentSlide }: NavbarProps) {
                         />
                     </a>
 
-                    <nav className="nav">
+                    <motion.nav
+                        className="nav"
+                        animate={{
+                            flexDirection: isMenuCircle && menuOpen ? "column" : "row",
+                            opacity: isMenuCircle ? (menuOpen ? 1 : 0) : 1,
+                        }}
+                        transition={{
+                            opacity: { duration: 0.2 },
+                        }}
+                    >
                         <a className="nav-link" href="/#services">
                             Cómo funciona
                         </a>
@@ -69,21 +109,26 @@ export default function Navbar({ currentSlide }: NavbarProps) {
                         <a className="nav-link nav-button" href="/#contact">
                             Cotizar
                         </a>
-                    </nav>
+                    </motion.nav>
                 </motion.div>
                 <AnimatePresence>
                     {
                         isMenuCircle && (
-                            <motion.span
-                                initial={{ scale: 0, opacity: 0 }}
-                                animate={{ scale: 1, opacity: 1 }}
-                                transition={{
-                                    duration: 0.5,
-                                    ease: "easeInOut"
-                                }}
-                            >
-                                <MenuCircle />
-                            </motion.span>
+                            <>
+                                <motion.span
+                                    initial={{ scale: 0, opacity: 0 }}
+                                    animate={{ scale: 1, opacity: 1 }}
+                                    transition={{
+                                        duration: 0.5,
+                                        ease: "easeInOut"
+                                    }}
+                                >
+                                    <MenuCircle />
+                                </motion.span>
+                                <button className="menu-icon">
+                                    <ArrowUpRight size={28} />
+                                </button>
+                            </>
                         )
                     }
                 </AnimatePresence>

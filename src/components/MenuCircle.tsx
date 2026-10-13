@@ -48,7 +48,7 @@ export default function MenuCircle() {
             </defs>
 
             <text
-                fill="#FFC83D"
+                fill="#f5f3e9"
                 fontFamily="Saira, sans-serif"
                 fontSize="12"
                 fontWeight="500"
