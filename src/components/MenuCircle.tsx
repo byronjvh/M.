@@ -54,7 +54,7 @@ export default function MenuCircle() {
                 fontWeight="500"
                 letterSpacing="1.8"
             >
-                <textPath href="#text-circle" startOffset="0%">
+                <textPath href="#text-circle" startOffset="52%" textAnchor="middle">
                     • COTIZAR POR WHATSAPP
                 </textPath>
             </text>

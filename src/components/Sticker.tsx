@@ -13,7 +13,7 @@ export default function Sticker() {
                 scale: 1,
             }}
             transition={{
-                delay: 1.3,
+                delay: 1.5,
                 duration: 0.4,
                 ease: [0.3, 1.4, 0.6, 1.6],
             }}

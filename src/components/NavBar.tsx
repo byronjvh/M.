@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import MenuCircle from "./MenuCircle";
 import { ArrowUpRight } from "lucide-react";
+import MobileMenu from "./MobileMenu";
 
 interface NavbarProps {
     currentSlide: number;
@@ -10,131 +11,134 @@ interface NavbarProps {
 const NAVBAR_STATE = {
     DEFAULT: "default",
     CIRCLE: "circle",
-    OPEN: "open",
 } as const;
 
 type NavbarState = typeof NAVBAR_STATE[keyof typeof NAVBAR_STATE];
 
+const LINKS = [
+    {
+        name: "Cómo funciona",
+        url: "/"
+    },
+    {
+        name: "Planes",
+        url: "/"
+    },
+    {
+        name: "Proyectos",
+        url: "/"
+    },
+    {
+        name: "Cotizar",
+        url: "/"
+    }
+]
+
 export default function Navbar({ currentSlide }: NavbarProps) {
-    const isMenuCircle = currentSlide > 0;
-    const [menuOpen, setMenuOpen] = useState(false);
+    const [navbarState, setNavbarState] = useState<NavbarState>(NAVBAR_STATE.DEFAULT)
+    const [open, setOpen] = useState<boolean>(false)
+
+    useEffect(() => {
+        if (currentSlide > 0) return setNavbarState(NAVBAR_STATE.CIRCLE)
+        else {
+            setNavbarState(NAVBAR_STATE.DEFAULT)
+            setOpen(false)
+        }
+    }, [currentSlide])
+
+    const toggleMenu = () => {
+        if (navbarState === NAVBAR_STATE.DEFAULT) return
+        if (open) setOpen(false)
+        else setOpen(true)
+    }
+
+    const isCircleMenu = navbarState === NAVBAR_STATE.CIRCLE
 
     return (
-        <div className="navbar-container" style={{ cursor: isMenuCircle && !menuOpen ? "pointer" : "" }}>
+        <div className="navbar-container" style={{ cursor: isCircleMenu ? "pointer" : "" }}>
 
 
             <motion.header
-                initial={{ borderRadius: "20px" }}
+                className="navbar"
+
                 animate={{
-                    borderRadius: isMenuCircle ? "50px 0 50px 50px" : "0px",
-                    width: isMenuCircle
-                        ? menuOpen ? "200px" : "90px"
-                        : "",
-                    height: isMenuCircle
-                        ? menuOpen ? "320px" : "90px"
-                        : "",
-                    backgroundColor: isMenuCircle ? "#121212" : "rgba(0,0,0,0)",
-                    top: isMenuCircle ? 24 : 0,
-                    right: isMenuCircle ? 24 : 0,
+                    backgroundColor: isCircleMenu ? "#121212" : "rgba(0,0,0,0)",
+                    height: !isCircleMenu ? 80 : open ? 320 : 90,
+                    width: !isCircleMenu ? "100%" : open ? 220 : 90,
+                    borderRadius: isCircleMenu
+                        ? open
+                            ? "10px 0px 10px 10px"
+                            : "999px 0px 999px 999px"
+                        : "2px 0px 2px 2px",
                 }}
                 transition={{
-                    borderRadius: {
-                        duration: 0.4,
-                        ease: "easeOut",
-                    },
                     width: {
                         type: "spring",
-                        stiffness: 200,
-                        damping: 25,
+                        stiffness: 220,
+                        damping: 26,
                     },
                     height: {
                         type: "spring",
-                        stiffness: 200,
-                        damping: 25,
+                        stiffness: 220,
+                        damping: 26,
                     },
-                    top: {
-                        type: "spring",
-                        stiffness: 200,
-                        damping: 25,
+                    borderRadius: {
+                        duration: 0.25,
+                        ease: "easeOut",
                     },
-                    right: {
-                        type: "spring",
-                        stiffness: 200,
-                        damping: 25,
+                    backgroundColor: {
+                        duration: 0.25,
                     },
                 }}
-                className="navbar"
-                onClick={() => isMenuCircle && setMenuOpen(prev => !prev)}
             >
+                <AnimatePresence mode="wait">
 
-                <motion.div
-                    animate={{
-                        height: isMenuCircle ? 0 : "100%",
-                        width: isMenuCircle ? 0 : "100%",
-                        opacity: isMenuCircle ? 0 : 1,
-                        right: isMenuCircle ? "100%" : ""
-                    }}
-                    className={`header-content ${isMenuCircle ? "menu-circle" : ""}`}
-                >
-                    <a href="/">
-                        <img
-                            className="logo"
-                            src="/logo.svg"
-                            alt="logo"
-                        />
-                    </a>
-
-                    <motion.nav
-                        className="nav"
-                        animate={{
-                            flexDirection: isMenuCircle && menuOpen ? "column" : "row",
-                            opacity: isMenuCircle ? (menuOpen ? 1 : 0) : 1,
-                        }}
-                        transition={{
-                            opacity: { duration: 0.2 },
-                        }}
-                    >
-                        <a className="nav-link" href="/#services">
-                            Cómo funciona
-                        </a>
-
-                        <a className="nav-link" href="/#portfolio">
-                            Planes
-                        </a>
-
-                        <a className="nav-link" href="/#contact">
-                            Proyectos
-                        </a>
-
-                        <a className="nav-link nav-button" href="/#contact">
-                            Cotizar
-                        </a>
-                    </motion.nav>
-                </motion.div>
-                <AnimatePresence>
                     {
-                        isMenuCircle && (
-                            <>
-                                <motion.span
-                                    initial={{ scale: 0, opacity: 0 }}
-                                    animate={{ scale: 1, opacity: 1 }}
-                                    transition={{
-                                        duration: 0.5,
-                                        ease: "easeInOut"
-                                    }}
-                                >
-                                    <MenuCircle />
-                                </motion.span>
-                                <button className="menu-icon">
-                                    <ArrowUpRight size={28} />
-                                </button>
-                            </>
-                        )
+                        navbarState === NAVBAR_STATE.DEFAULT ? (
+
+                            <motion.nav key="default"
+                                className="nav"
+                                initial={{ opacity: 0, y: -12 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, scaleX: 0, width: "10%" }}
+                                transition={{ duration: 0.25, ease: "easeOut" }}
+                            >
+                                <a href="/">
+                                    <img
+                                        className="logo"
+                                        src="/logo.svg"
+                                        alt="logo"
+                                    />
+                                </a>
+                                <div className="links-wrapper">
+                                    {LINKS.map((el) => (
+                                        <a key={el.name} className={`nav-link ${el.name === "Cotizar" ? "nav-button" : ""}`} href={el.url}>{el.name}</a>
+                                    ))}
+                                </div>
+                            </motion.nav>
+                        ) : isCircleMenu ? (
+                            <MobileMenu open={open} key="mobile"
+                                links={LINKS} />
+                        ) : ""
                     }
                 </AnimatePresence>
 
+                <AnimatePresence>
+                    <motion.button onClick={toggleMenu} className="menu-open-button"
+                        initial={{ x: -100, opacity: 0, scale: 0 }}
+                        animate={{ x: isCircleMenu ? 0 : -100, opacity: isCircleMenu ? 1 : 0, scale: isCircleMenu ? 1 : 0 }}
+                        transition={{ duration: 0.3, ease: "easeOut" }}
+                    >
+                        <MenuCircle />
+                        <span className="menu-open-icon">
+                            <ArrowUpRight size={28} />
+                        </span>
+                    </motion.button>
+                </AnimatePresence>
+
+
 
             </motion.header>
-        </div>
+        </div >
     );
 }
