@@ -1,7 +1,7 @@
 import { motion, useAnimate } from "motion/react";
 import { useEffect, useRef } from "react";
 
-export default function MenuCircle() {
+export default function MenuCircle({ open }: { open: boolean }) {
     const [scope, animate] = useAnimate<SVGSVGElement>();
     const animationRef = useRef<ReturnType<typeof animate> | null>(null);
 
@@ -24,6 +24,15 @@ export default function MenuCircle() {
     return (
         <motion.svg
             ref={scope}
+            animate={{
+                opacity: open ? 0 : 1,
+                scale: open ? 0 : 1,
+            }}
+            transition={{
+                duration: 0.25,
+                ease: "easeInOut",
+            }}
+            style={{ pointerEvents: open ? "none" : "auto" }}
             onHoverStart={() => animationRef.current?.pause()}
             onHoverEnd={() => animationRef.current?.play()}
             width="90"

@@ -68,7 +68,7 @@ export default function Navbar({ currentSlide }: NavbarProps) {
                     borderRadius: isCircleMenu
                         ? open
                             ? "10px 0px 10px 10px"
-                            : "999px 0px 999px 999px"
+                            : "45px 0px 45px 45px"
                         : "2px 0px 2px 2px",
                 }}
                 transition={{
@@ -125,11 +125,11 @@ export default function Navbar({ currentSlide }: NavbarProps) {
 
                 <AnimatePresence>
                     <motion.button onClick={toggleMenu} className="menu-open-button"
-                        initial={{ x: -100, opacity: 0, scale: 0 }}
-                        animate={{ x: isCircleMenu ? 0 : -100, opacity: isCircleMenu ? 1 : 0, scale: isCircleMenu ? 1 : 0 }}
+                        initial={{ x: -200, opacity: 0, scale: 0 }}
+                        animate={{ x: isCircleMenu ? 0 : -200, opacity: isCircleMenu ? 1 : 0, scale: isCircleMenu ? 1 : 0 }}
                         transition={{ duration: 0.3, ease: "easeOut" }}
                     >
-                        <MenuCircle />
+                        <MenuCircle open={open} />
                         <span className="menu-open-icon">
                             <ArrowUpRight size={28} />
                         </span>
