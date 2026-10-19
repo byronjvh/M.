@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import MenuCircle from "./MenuCircle";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, X } from "lucide-react";
 import MobileMenu from "./MobileMenu";
 
 interface NavbarProps {
@@ -55,16 +55,16 @@ export default function Navbar({ currentSlide }: NavbarProps) {
     const isCircleMenu = navbarState === NAVBAR_STATE.CIRCLE
 
     return (
-        <div className="navbar-container" style={{ cursor: isCircleMenu ? "pointer" : "" }}>
+        <div className="navbar-container">
 
 
             <motion.header
                 className="navbar"
-
+                style={{ alignItems: isCircleMenu ? "" : "center" }}
                 animate={{
                     backgroundColor: isCircleMenu ? "#121212" : "rgba(0,0,0,0)",
                     height: !isCircleMenu ? 80 : open ? 320 : 90,
-                    width: !isCircleMenu ? "100%" : open ? 220 : 90,
+                    width: !isCircleMenu ? "100%" : open ? 230 : 90,
                     borderRadius: isCircleMenu
                         ? open
                             ? "10px 0px 10px 10px"
@@ -78,9 +78,6 @@ export default function Navbar({ currentSlide }: NavbarProps) {
                         damping: 26,
                     },
                     height: {
-                        type: "spring",
-                        stiffness: 220,
-                        damping: 26,
                     },
                     borderRadius: {
                         duration: 0.25,
@@ -130,9 +127,23 @@ export default function Navbar({ currentSlide }: NavbarProps) {
                         transition={{ duration: 0.3, ease: "easeOut" }}
                     >
                         <MenuCircle open={open} />
-                        <span className="menu-open-icon">
-                            <ArrowUpRight size={28} />
-                        </span>
+                        <AnimatePresence>
+                            <motion.span
+                                key={open ? "close" : "open"}
+                                initial={{ opacity: 0, rotate: -90, scale: 0.7 }}
+                                animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                                exit={{ opacity: 0, rotate: 90, scale: 0.7 }}
+                                transition={{ duration: 0.2, ease: "easeInOut" }}
+                                className="menu-open-icon">
+                                {
+                                    open ? (
+                                        <X size={28} />
+                                    ) : (
+                                        <ArrowUpRight size={28} />
+                                    )
+                                }
+                            </motion.span>
+                        </AnimatePresence>
                     </motion.button>
                 </AnimatePresence>
 

@@ -14,7 +14,7 @@ export default function MobileMenu({ links, open }: any) {
                 ease: "easeOut",
             }}
         >
-            <a href="/">
+            <a className="mobile-logo-link" href="/">
                 <img
                     className="logo"
                     src="/logo.svg"

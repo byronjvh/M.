@@ -12,7 +12,7 @@ const slides = [
     },
     {
         id: "services",
-        color: "#3155FF",
+        color: "#f5f3e9",
         name: "Services",
         content: <ServicesSlide />,
     },
