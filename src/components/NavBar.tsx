@@ -17,6 +17,10 @@ type NavbarState = typeof NAVBAR_STATE[keyof typeof NAVBAR_STATE];
 
 const LINKS = [
     {
+        name: "El problema",
+        url: "/"
+    },
+    {
         name: "Cómo funciona",
         url: "/"
     },
@@ -63,8 +67,9 @@ export default function Navbar({ currentSlide }: NavbarProps) {
                 style={{ alignItems: isCircleMenu ? "" : "center" }}
                 animate={{
                     backgroundColor: isCircleMenu ? "#121212" : "rgba(0,0,0,0)",
-                    height: !isCircleMenu ? 80 : open ? 320 : 90,
-                    width: !isCircleMenu ? "100%" : open ? 230 : 90,
+                    height: !isCircleMenu ? 80 : open ? 314 : 90,
+                    width: !isCircleMenu ? "calc(100% - 0px)" : open ? 200 : 90,
+                    x: !isCircleMenu ? "16px" : 0,
                     borderRadius: isCircleMenu
                         ? open
                             ? "10px 0px 10px 10px"

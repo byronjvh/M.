@@ -1,20 +1,32 @@
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import HeroSlide from "./slides/HeroSlide";
-import ServicesSlide from "./slides/ServicesSlide";
+import Problem from "./slides/Problem";
+import { cloneElement, type ReactElement } from "react";
 
-const slides = [
+export interface SlideProps {
+    isCurrent: boolean;
+}
+
+interface Slide {
+    id: string;
+    color: string;
+    name: string;
+    content: ReactElement<SlideProps>;
+}
+
+const slides: Slide[] = [
     {
         id: "hero",
         color: "#009982",
         name: "Hero",
-        content: <HeroSlide />,
+        content: <HeroSlide isCurrent={false} />,
     },
     {
         id: "services",
         color: "#f5f3e9",
         name: "Services",
-        content: <ServicesSlide />,
+        content: <Problem isCurrent={false} />,
     },
 ];
 
@@ -52,7 +64,6 @@ export default function SlideDeck({ currentSlide, setCurrentSlide }: { currentSl
             {slides.map((slide, index) => {
                 const isCurrent = index === currentSlide;
                 const isPrevious = index < currentSlide;
-
                 return (
                     <motion.section
                         key={slide.id}
@@ -72,7 +83,7 @@ export default function SlideDeck({ currentSlide, setCurrentSlide }: { currentSl
                         }}
                     >
                         <div className="slide-content">
-                            {slide.content}
+                            {cloneElement(slide.content, { isCurrent })}
                         </div>
                     </motion.section>
                 );

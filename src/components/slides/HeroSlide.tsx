@@ -1,9 +1,10 @@
 import AnimatedCard from "../AnimatedCard";
 import AnimatedCardDark from "../AnimatedCardDark";
 import Button from "../Button";
+import type { SlideProps } from "../SlideDeck";
 import Sticker from "../Sticker";
 
-export default function HeroSlide() {
+export default function HeroSlide({ isCurrent }: SlideProps) {
     return (
         <div className="hero-content">
             <div className="hero-text">

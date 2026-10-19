@@ -1,0 +1,94 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+
+.problem {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    justify-content: space-between;
+    padding-right: 12px;
+}
+
+.problem-intro {
+    max-width: 660px;
+}
+
+.problem-title {
+    line-height: 0.9;
+    font-size: 8rem;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    color: #009982;
+}
+
+.problem-decoration {
+    background-color: #FFC83D;
+    width: max-content;
+    padding: 32px 16px;
+    color: #121212;
+}
+
+.problem-description {
+    color: #121212;
+    font-weight: 500;
+    line-height: 1.2;
+    font-size: 24px;
+}
+
+.problem-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.problem-card {
+    background-color: #009982;
+    display: flex;
+    align-items: center;
+    padding: 28px;
+    gap: 8px;
+    max-width: 410px;
+    line-height: 1.25;
+    color: #f5f3e9;
+    transform-origin: center;
+}
+
+.problem-card p {
+    font-family: "Saira", sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.problem-card span {
+    font-family: "Saira Extra Condensed", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+    font-size: 64px;
+}
+
+.problem-card-2,
+.problem-card-2 p,
+.problem-card-3,
+.problem-card-3 p {
+    color: #121212;
+}
+
+.problem-card-2 {
+    background-color: #FFC83D;
+}
+
+.problem-card-3 {
+    background-color: #FF6A55;
+}
