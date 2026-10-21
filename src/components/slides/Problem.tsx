@@ -17,7 +17,7 @@ export default function Problem({ isCurrent }: SlideProps) {
                         animate={{ y: isCurrent ? -20 : 0, opacity: isCurrent ? 1 : 0 }}
                         transition={{
                             duration: 0.8,
-                            delay: isCurrent ? 1.5 : 0,
+                            delay: isCurrent ? 1.3 : 0,
                             ease: [0.22, 1, 0.36, 1],
                         }}
                         className={styles["problem-decoration"]}>
@@ -39,7 +39,7 @@ export default function Problem({ isCurrent }: SlideProps) {
                     }}
                     transition={{
                         duration: 0.3,
-                        delay: isCurrent ? 0.6 : 0,
+                        delay: isCurrent ? 0.4 : 0,
                     }}
                 >
                     <motion.article
@@ -63,7 +63,7 @@ export default function Problem({ isCurrent }: SlideProps) {
                     }}
                     transition={{
                         duration: 0.3,
-                        delay: isCurrent ? 0.8 : 0,
+                        delay: isCurrent ? 0.6 : 0,
                     }}
                 >
                     <motion.article
@@ -87,7 +87,7 @@ export default function Problem({ isCurrent }: SlideProps) {
                     }}
                     transition={{
                         duration: 0.3,
-                        delay: isCurrent ? 1 : 0,
+                        delay: isCurrent ? 0.8 : 0,
                     }}
                 >
                     <motion.article
