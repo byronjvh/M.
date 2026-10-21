@@ -15,7 +15,7 @@
 
 .HIW-title {
     line-height: 0.95;
-    font-size: 9rem;
+    font-size: 8.4rem;
     text-transform: uppercase;
     display: flex;
     flex-direction: column;
@@ -33,7 +33,6 @@
 .HIW-cards {
     display: flex;
     flex-direction: column;
-    gap: 8px;
 }
 
 .HIW-card {
