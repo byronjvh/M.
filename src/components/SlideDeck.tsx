@@ -44,7 +44,7 @@ const slides: Slide[] = [
             background: "#F5F3E9",
             onLight: "#121212",
             onDark: "#F5F3E9",
-            hover: "#FFC83D",
+            hover: "#ffe39c",
             indicator: "#121212"
         },
         content: <Problem isCurrent={false} />,
