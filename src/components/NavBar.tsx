@@ -3,9 +3,11 @@ import { AnimatePresence, motion } from "motion/react";
 import MenuCircle from "./MenuCircle";
 import { ArrowUpRight, X } from "lucide-react";
 import MobileMenu from "./MobileMenu";
+import type { palette } from "./SlideDeck";
 
 interface NavbarProps {
     currentSlide: number;
+    colorPalette: palette;
 }
 
 const NAVBAR_STATE = {
@@ -38,7 +40,7 @@ const LINKS = [
     }
 ]
 
-export default function Navbar({ currentSlide }: NavbarProps) {
+export default function Navbar({ currentSlide, colorPalette }: NavbarProps) {
     const [navbarState, setNavbarState] = useState<NavbarState>(NAVBAR_STATE.DEFAULT)
     const [open, setOpen] = useState<boolean>(false)
 
@@ -127,16 +129,19 @@ export default function Navbar({ currentSlide }: NavbarProps) {
 
                 <AnimatePresence>
                     <motion.button onClick={toggleMenu} className="menu-open-button"
-                        initial={{ x: -200, opacity: 0, scale: 0 }}
-                        animate={{ x: isCircleMenu ? 0 : -200, opacity: isCircleMenu ? 1 : 0, scale: isCircleMenu ? 1 : 0 }}
+                        initial={{ x: -200, opacity: 0, scale: 0, color: colorPalette.onLight }}
+                        animate={{ x: isCircleMenu ? 0 : -200, opacity: isCircleMenu ? 1 : 0, scale: isCircleMenu ? 1 : 0, color: colorPalette.onDark }}
+                        whileHover={{ color: colorPalette.hover }}
                         transition={{ duration: 0.3, ease: "easeOut" }}
+
                     >
                         <MenuCircle open={open} />
                         <AnimatePresence>
                             <motion.span
                                 key={open ? "close" : "open"}
-                                initial={{ opacity: 0, rotate: -90, scale: 0.7 }}
-                                animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                                initial={{ opacity: 0, rotate: -90, scale: 0.7, color: colorPalette.onLight, backgroundColor: colorPalette.onDark }}
+                                animate={{ opacity: 1, rotate: 0, scale: 1, color: colorPalette.onLight, backgroundColor: colorPalette.onDark }}
+                                whileHover={{ backgroundColor: colorPalette.hover }}
                                 exit={{ opacity: 0, rotate: 90, scale: 0.7 }}
                                 transition={{ duration: 0.2, ease: "easeInOut" }}
                                 className="menu-open-icon">

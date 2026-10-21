@@ -1,0 +1,84 @@
+.HIW {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    justify-content: space-between;
+    padding-right: 12px;
+}
+
+.HIW-intro {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-bottom: 16px;
+}
+
+.HIW-title {
+    line-height: 0.95;
+    font-size: 9rem;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    color: #121212;
+}
+
+.HIW-description {
+    color: #121212;
+    font-weight: 500;
+    line-height: 1.2;
+    font-size: 24px;
+}
+
+.HIW-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.HIW-card {
+    display: flex;
+    align-items: center;
+    padding: 20px 28px;
+    gap: 22px;
+    width: 100%;
+    max-width: 600px;
+    line-height: 1.25;
+    color: #121212;
+    transform-origin: center;
+}
+
+.HIW-card p {
+    font-family: "Saira", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #121212;
+}
+
+.HIW-card h3 {
+    font-family: "Saira Extra Condensed", sans-serif;
+    font-size: 30px;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.HIW-card span {
+    font-family: "Saira Extra Condensed", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+    font-size: 64px;
+}
+
+.HIW-card:not(.HIW-card-highlight) {
+    border-top: 2px solid #121212;
+}
+
+.HIW-card-highlight {
+    background-color: #121212;
+    color: #FFC83D;
+}
+
+.HIW-card-highlight p {
+    color: #FFC83D;
+}

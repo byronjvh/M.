@@ -57,7 +57,7 @@ export default function MenuCircle({ open }: { open: boolean }) {
             </defs>
 
             <text
-                fill="#f5f3e9"
+                fill="currentColor"
                 fontFamily="Saira, sans-serif"
                 fontSize="12"
                 fontWeight="500"

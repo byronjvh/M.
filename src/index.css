@@ -31,7 +31,7 @@ h1 {
     margin: 0;
     line-height: 0.95;
     color: #f5f3e9;
-    font-size: 6rem;
+    font-size: 6.5rem;
     letter-spacing: -1px;
     text-wrap: nowrap;
 }
@@ -364,7 +364,7 @@ main {
 
 .hero-cards {
     width: 100%;
-    max-width: 560px;
+    max-width: 480px;
     position: relative;
 }
 

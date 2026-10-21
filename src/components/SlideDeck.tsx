@@ -3,34 +3,67 @@ import { motion } from "motion/react";
 import HeroSlide from "./slides/HeroSlide";
 import Problem from "./slides/Problem";
 import { cloneElement, type ReactElement } from "react";
+import HowItWorks from "./slides/HowItWorks";
 
 export interface SlideProps {
     isCurrent: boolean;
 }
 
+export interface palette {
+    background: string,
+    onLight: string,
+    onDark: string,
+    hover: string,
+    indicator: string
+}
+
 interface Slide {
     id: string;
-    color: string;
     name: string;
+    palette: palette
     content: ReactElement<SlideProps>;
 }
 
 const slides: Slide[] = [
     {
         id: "hero",
-        color: "#009982",
         name: "Hero",
+        palette: {
+            background: "#009982",
+            onLight: "#121212",
+            onDark: "#F5F3E9",
+            hover: "#FFC83D",
+            indicator: "#F5F3E9"
+        },
         content: <HeroSlide isCurrent={false} />,
     },
     {
-        id: "services",
-        color: "#f5f3e9",
-        name: "Services",
+        id: "problem",
+        name: "Problem",
+        palette: {
+            background: "#F5F3E9",
+            onLight: "#121212",
+            onDark: "#F5F3E9",
+            hover: "#FFC83D",
+            indicator: "#121212"
+        },
         content: <Problem isCurrent={false} />,
+    },
+    {
+        id: "howItWorks",
+        name: "HowItWorks",
+        palette: {
+            background: "#FFC83D",
+            onLight: "#121212",
+            onDark: "#FFC83D",
+            hover: "#ffe39c",
+            indicator: "#121212"
+        },
+        content: <HowItWorks isCurrent={false} />,
     },
 ];
 
-export default function SlideDeck({ currentSlide, setCurrentSlide }: { currentSlide: number, setCurrentSlide: Function }) {
+export default function SlideDeck({ currentSlide, setCurrentSlide, setColorPalette }: { currentSlide: number, setCurrentSlide: Function, setColorPalette: Function }) {
     const nextSlide = () => {
         setCurrentSlide((current: number) =>
             Math.min(current + 1, slides.length - 1)
@@ -59,6 +92,10 @@ export default function SlideDeck({ currentSlide, setCurrentSlide }: { currentSl
         };
     }, []);
 
+    useEffect(() => {
+        setColorPalette(slides[currentSlide].palette)
+    }, [currentSlide])
+
     return (
         <div className="deck">
             {slides.map((slide, index) => {
@@ -69,7 +106,7 @@ export default function SlideDeck({ currentSlide, setCurrentSlide }: { currentSl
                         key={slide.id}
                         className={`slide slide-${slide.name.toLowerCase()}`}
                         style={{
-                            backgroundColor: slide.color,
+                            backgroundColor: slide.palette.background,
                             zIndex: isPrevious ? 20 : slides.length - index,
                         }}
                         animate={{
