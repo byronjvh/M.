@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 import { motion } from "motion/react";
 import HeroSlide from "./slides/HeroSlide";
 import Problem from "./slides/Problem";
@@ -76,16 +76,26 @@ export default function SlideDeck({ currentSlide, setCurrentSlide, setColorPalet
         );
     };
 
+    const isScrolling = useRef(false);
+
     useEffect(() => {
         const handleWheel = (event: WheelEvent) => {
+            if (isScrolling.current || event.deltaY === 0) return;
+
+            isScrolling.current = true;
+
             if (event.deltaY > 0) {
                 nextSlide();
-            } else if (event.deltaY < 0) {
+            } else {
                 previousSlide();
             }
+
+            setTimeout(() => {
+                isScrolling.current = false;
+            }, 500);
         };
 
-        window.addEventListener("wheel", handleWheel);
+        window.addEventListener("wheel", handleWheel, { passive: true });
 
         return () => {
             window.removeEventListener("wheel", handleWheel);
