@@ -10,21 +10,21 @@ export default function HowItWorks({ isCurrent }: SlideProps) {
                     <motion.span
                         initial={{ opacity: 0, x: -60 }}
                         animate={{ opacity: isCurrent ? 1 : 0, x: isCurrent ? 0 : -60 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 25, delay: 0.4 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 25, delay: isCurrent ? 0.4 : 0 }}
                     >
                         La hacemos.
                     </motion.span>
                     <motion.span
                         initial={{ opacity: 0, x: -60 }}
                         animate={{ opacity: isCurrent ? 1 : 0, x: isCurrent ? 0 : -60 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 25, delay: 0.7 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 25, delay: isCurrent ? 0.7 : 0 }}
                     >
                         La ves.
                     </motion.span>
                     <motion.span
                         initial={{ opacity: 0, x: -60 }}
                         animate={{ opacity: isCurrent ? 1 : 0, x: isCurrent ? 0 : -60 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 25, delay: 1 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 25, delay: isCurrent ? 1 : 0 }}
                     >
                         Tú decides.
                     </motion.span>
@@ -37,7 +37,7 @@ export default function HowItWorks({ isCurrent }: SlideProps) {
                 <motion.article className={styles["HIW-card"]}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: isCurrent ? 1 : 0, y: isCurrent ? 0 : 20 }}
-                    transition={{ delay: 1.2, duration: 0.4 }}
+                    transition={{ delay: isCurrent ? 1.2 : 0, duration: 0.4 }}
                 >
                     <span>01</span>
                     <div>
@@ -48,7 +48,7 @@ export default function HowItWorks({ isCurrent }: SlideProps) {
                 <motion.article className={styles["HIW-card"]}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: isCurrent ? 1 : 0, y: isCurrent ? 0 : 20 }}
-                    transition={{ delay: 1.3, duration: 0.4 }}
+                    transition={{ delay: isCurrent ? 1.3 : 0, duration: 0.4 }}
                 >
                     <span>02</span>
                     <div>
@@ -59,7 +59,7 @@ export default function HowItWorks({ isCurrent }: SlideProps) {
                 <motion.article className={`${styles["HIW-card"]} ${styles["HIW-card-highlight"]}`}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: isCurrent ? 1 : 0, y: isCurrent ? 0 : 20 }}
-                    transition={{ delay: 1.4, duration: 0.4 }}
+                    transition={{ delay: isCurrent ? 1.4 : 0, duration: 0.4 }}
                 >
                     <span>03</span>
                     <div>
