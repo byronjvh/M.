@@ -69,7 +69,7 @@ export default function Navbar({ currentSlide, colorPalette, setCurrentSlide }: 
                 className="navbar"
                 style={{ alignItems: isCircleMenu ? "" : "center" }}
                 animate={{
-                    backgroundColor: isCircleMenu ? "#121212" : "rgba(0,0,0,0)",
+                    backgroundColor: isCircleMenu ? colorPalette.onLight : "rgba(0,0,0,0)",
                     height: !isCircleMenu ? 80 : open ? 314 : 90,
                     width: !isCircleMenu ? "calc(100% - 0px)" : open ? 200 : 90,
                     x: !isCircleMenu ? "16px" : 0,
@@ -142,7 +142,7 @@ export default function Navbar({ currentSlide, colorPalette, setCurrentSlide }: 
                         transition={{ duration: 0.3, ease: "easeOut" }}
 
                     >
-                        <MenuCircle open={open} />
+                        <MenuCircle backgroundColor={colorPalette.onLight} open={open} />
                         <AnimatePresence>
                             <motion.span
                                 key={open ? "close" : "open"}

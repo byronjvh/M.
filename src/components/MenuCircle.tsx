@@ -1,7 +1,7 @@
 import { motion, useAnimate } from "motion/react";
 import { useEffect, useRef } from "react";
 
-export default function MenuCircle({ open }: { open: boolean }) {
+export default function MenuCircle({ open, backgroundColor }: { open: boolean, backgroundColor: string }) {
     const [scope, animate] = useAnimate<SVGSVGElement>();
     const animationRef = useRef<ReturnType<typeof animate> | null>(null);
 
@@ -41,7 +41,7 @@ export default function MenuCircle({ open }: { open: boolean }) {
             xmlns="http://www.w3.org/2000/svg"
             className="menu-circle"
         >
-            <circle cx="45" cy="45" r="44" fill="#121212" />
+            <circle cx="45" cy="45" r="44" fill={backgroundColor} />
 
             <defs>
                 <path

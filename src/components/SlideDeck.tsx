@@ -4,6 +4,7 @@ import HeroSlide from "./slides/HeroSlide";
 import Problem from "./slides/Problem";
 import { cloneElement, type ReactElement } from "react";
 import HowItWorks from "./slides/HowItWorks";
+import Plans from "./slides/Plans";
 
 export interface SlideProps {
     isCurrent: boolean;
@@ -61,6 +62,18 @@ const slides: Slide[] = [
             indicator: "#121212"
         },
         content: <HowItWorks isCurrent={false} />,
+    },
+    {
+        id: "plans",
+        name: "Plans",
+        palette: {
+            background: "#121212",
+            onLight: "#FFC83D",
+            onDark: "#121212",
+            hover: "#333",
+            indicator: "#F5F3E9"
+        },
+        content: <Plans isCurrent={false} />,
     },
 ];
 

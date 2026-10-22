@@ -15,13 +15,13 @@ export default function MobileMenu({ links, open, setCurrentSlide }: any) {
                 ease: "easeOut",
             }}
         >
-            <a className="mobile-logo-link" href="/">
+            <button className="mobile-logo-link" onClick={() => setCurrentSlide(0)} >
                 <img
                     className="logo"
                     src="/logo.svg"
                     alt="logo"
                 />
-            </a>
+            </button>
             <div className="mobile-links-wrapper">
                 {links.map((el: any, i: number) => (
                     <button key={el.name} onClick={() => setCurrentSlide(i + 1)} className={`mobile-nav-link ${el.name === "Cotizar" ? "mobile-nav-button" : ""}`} >{el.name}</button>
