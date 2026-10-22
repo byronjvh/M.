@@ -544,7 +544,8 @@ main {
     margin-bottom: 16px;
     font-size: 18px;
     font-family: "Saira", sans-serif;
-    font-weight: 500;
+    font-weight: 600;
+    letter-spacing: 1px;
     color: #f5f3e9;
 }
 
