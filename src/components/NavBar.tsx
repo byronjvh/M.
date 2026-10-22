@@ -8,6 +8,7 @@ import type { palette } from "./SlideDeck";
 interface NavbarProps {
     currentSlide: number;
     colorPalette: palette;
+    setCurrentSlide: Function;
 }
 
 const NAVBAR_STATE = {
@@ -40,7 +41,7 @@ const LINKS = [
     }
 ]
 
-export default function Navbar({ currentSlide, colorPalette }: NavbarProps) {
+export default function Navbar({ currentSlide, colorPalette, setCurrentSlide }: NavbarProps) {
     const [navbarState, setNavbarState] = useState<NavbarState>(NAVBAR_STATE.DEFAULT)
     const [open, setOpen] = useState<boolean>(false)
 
@@ -104,7 +105,7 @@ export default function Navbar({ currentSlide, colorPalette }: NavbarProps) {
                                 className="nav"
                                 initial={{ opacity: 0, y: -12 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, scaleX: 0, width: "10%" }}
+                                exit={{ opacity: 0, width: "10%" }}
                                 transition={{ duration: 0.25, ease: "easeOut" }}
                             >
                                 <a href="/">
@@ -115,13 +116,13 @@ export default function Navbar({ currentSlide, colorPalette }: NavbarProps) {
                                     />
                                 </a>
                                 <div className="links-wrapper">
-                                    {LINKS.map((el) => (
-                                        <a key={el.name} className={`nav-link ${el.name === "Cotizar" ? "nav-button" : ""}`} href={el.url}>{el.name}</a>
+                                    {LINKS.map((el, i) => (
+                                        <button key={el.name} onClick={() => setCurrentSlide(i + 1)} className={`nav-link ${el.name === "Cotizar" ? "nav-button" : ""}`} >{el.name}</button>
                                     ))}
                                 </div>
                             </motion.nav>
                         ) : isCircleMenu ? (
-                            <MobileMenu open={open} key="mobile"
+                            <MobileMenu open={open} setCurrentSlide={setCurrentSlide} key="mobile"
                                 links={LINKS} />
                         ) : ""
                     }

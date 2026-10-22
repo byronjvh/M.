@@ -10,12 +10,12 @@ export default function AppLayout() {
         onLight: "#121212",
         onDark: "#F5F3E9",
         hover: "#FFC83D",
-        indicator: "F5F3E9"
+        indicator: "#F5F3E9"
     });
 
     return (
         <div className="layout">
-            <Navbar colorPalette={colorPalette} currentSlide={currentSlide} />
+            <Navbar colorPalette={colorPalette} currentSlide={currentSlide} setCurrentSlide={setCurrentSlide} />
 
             <main className="content">
                 <SlideDeck

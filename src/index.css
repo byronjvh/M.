@@ -230,6 +230,9 @@ main {
     text-transform: uppercase;
     transition: color 0.1s ease-out;
     position: relative;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
 
 .nav-link:not(.nav-button):after {
@@ -303,6 +306,9 @@ main {
     width: 100%;
     text-wrap: nowrap;
     transition: color .2s ease-out;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
 
 .mobile-nav-link:not(.mobile-nav-button):hover {

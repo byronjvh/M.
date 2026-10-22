@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 
-export default function MobileMenu({ links, open }: any) {
+export default function MobileMenu({ links, open, setCurrentSlide }: any) {
+
     return (
         <motion.nav
             className="mobile-nav"
@@ -22,8 +23,8 @@ export default function MobileMenu({ links, open }: any) {
                 />
             </a>
             <div className="mobile-links-wrapper">
-                {links.map((el: any) => (
-                    <a key={el.name} className={`mobile-nav-link ${el.name === "Cotizar" ? "mobile-nav-button" : ""}`} href={el.url}>{el.name}</a>
+                {links.map((el: any, i: number) => (
+                    <button key={el.name} onClick={() => setCurrentSlide(i + 1)} className={`mobile-nav-link ${el.name === "Cotizar" ? "mobile-nav-button" : ""}`} >{el.name}</button>
                 ))}
             </div>
         </motion.nav>
