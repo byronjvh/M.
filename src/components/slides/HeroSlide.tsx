@@ -4,7 +4,12 @@ import Button from "../Button";
 import type { SlideProps } from "../SlideDeck";
 import Sticker from "../Sticker";
 
-export default function HeroSlide({ isCurrent }: SlideProps) {
+export default function HeroSlide({ isCurrent, setCurrentSlide }: SlideProps) {
+    const handleClick = (i: number) => {
+        if (!setCurrentSlide) return
+        setCurrentSlide(i)
+    }
+
     return (
         <div className="hero-content">
             <div className="hero-text">
@@ -20,9 +25,9 @@ export default function HeroSlide({ isCurrent }: SlideProps) {
 
                 <div className="hero-buttons">
                     <Button />
-                    <a className="hero-link" href="/">
+                    <button className="hero-link" onClick={() => handleClick(2)}>
                         Ver cómo funciona
-                    </a>
+                    </button>
                 </div>
             </div>
             <div className="hero-cards">

@@ -114,13 +114,13 @@ export default function Navbar({ currentSlide, colorPalette, setCurrentSlide }: 
                                 exit={{ opacity: 0, width: "10%" }}
                                 transition={{ duration: 0.25, ease: "easeOut" }}
                             >
-                                <a href="/">
+                                <button className="nav-logo-link" onClick={() => setCurrentSlide(0)}>
                                     <img
                                         className="logo"
                                         src="/logo.svg"
                                         alt="logo"
                                     />
-                                </a>
+                                </button>
                                 <div className="links-wrapper">
                                     {LINKS.map((el, i) => (
                                         <button key={el.name} onClick={() => setCurrentSlide(i + 1)} className={`nav-link ${el.name === "Cotizar" ? "nav-button" : ""}`} >{el.name}</button>

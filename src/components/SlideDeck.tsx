@@ -7,6 +7,7 @@ import HowItWorks from "./slides/HowItWorks";
 
 export interface SlideProps {
     isCurrent: boolean;
+    setCurrentSlide?: Function;
 }
 
 export interface palette {
@@ -130,7 +131,7 @@ export default function SlideDeck({ currentSlide, setCurrentSlide, setColorPalet
                         }}
                     >
                         <div className="slide-content">
-                            {cloneElement(slide.content, { isCurrent })}
+                            {cloneElement(slide.content, { isCurrent, setCurrentSlide })}
                         </div>
                     </motion.section>
                 );
