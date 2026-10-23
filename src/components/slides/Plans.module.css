@@ -3,8 +3,8 @@
     flex-direction: column;
     justify-content: center;
     height: 100%;
-    justify-content: space-between;
     padding-right: 12px;
+    gap: 16px;
 }
 
 .plans-title {
@@ -20,12 +20,95 @@
 .plans-options {
     display: flex;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
 .plan {
     display: flex;
     flex-direction: column;
-    gap: 16px;
     border: 2px solid #F5F3E9;
-    padding: 22px;
+    padding: 32px;
+    padding-bottom: 48px;
+    flex: 1;
+}
+
+.plan-title {
+    font-family: "Saira Extra Condensed", sans-serif;
+    text-transform: uppercase;
+    color: #F5F3E9;
+    font-weight: 900;
+    font-size: 56px;
+    line-height: 1;
+    letter-spacing: 2px;
+}
+
+.plan-price {
+    font-family: "Saira Extra Condensed", sans-serif;
+    text-transform: uppercase;
+    color: #F5F3E9;
+    font-weight: 900;
+    font-size: 84px;
+    line-height: 1.3;
+    margin-bottom: 24px;
+}
+
+.plan-price span {
+    font-family: "Saira", sans-serif;
+    font-size: 18px;
+    text-transform: none;
+    font-weight: 600;
+}
+
+.plan-features {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.plan-features li {
+    padding: 16px 0;
+    border-top: 1px solid #F5F3E933;
+    list-style: none;
+}
+
+.plan-tag {
+    height: 28px;
+    background-color: #121212;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-family: "Saira", sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 0 10px;
+    width: max-content;
+    margin-bottom: 12px;
+    color: #FFC83D;
+}
+
+.plan:not(.highlighted) .plan-title {
+    margin-top: 40px;
+}
+
+.plan.highlighted {
+    background-color: #FFC83D;
+    border: none;
+}
+
+.plan.highlighted .plan-title {
+    color: #121212;
+}
+
+.plan.highlighted .plan-price {
+    color: #121212;
+}
+
+.plan.highlighted .plan-features li {
+    border-color: #12121233;
+}
+
+.plan.highlighted .plan-features p {
+    color: #121212;
 }
