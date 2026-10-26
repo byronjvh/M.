@@ -26,9 +26,8 @@
 .plan {
     display: flex;
     flex-direction: column;
-    border: 2px solid #F5F3E9;
+    border: 2px solid #F5F3E9BB;
     padding: 32px;
-    padding-bottom: 48px;
     flex: 1;
 }
 
@@ -62,7 +61,6 @@
 .plan-features {
     display: flex;
     flex-direction: column;
-    gap: 4px;
 }
 
 .plan-features li {
@@ -89,7 +87,7 @@
 }
 
 .plan:not(.highlighted) .plan-title {
-    margin-top: 40px;
+    margin-top: 38px;
 }
 
 .plan.highlighted {
@@ -111,4 +109,28 @@
 
 .plan.highlighted .plan-features p {
     color: #121212;
+}
+
+.plan-button {
+    border: 2px solid #F5F3E9;
+    background-color: #121212;
+    color: #F5F3E9;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: "Saira", sans-serif;
+    padding-block: 10px;
+    font-size: 18px;
+    letter-spacing: 1px;
+    margin-top: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.plan.highlighted .plan-button {
+    border-color: transparent;
+    background-color: #121212;
+    color: #FFC83D;
 }

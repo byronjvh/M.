@@ -1,3 +1,4 @@
+import { MoveRight } from "lucide-react"
 import type { SlideProps } from "../SlideDeck"
 import styles from "./Plans.module.css"
 
@@ -11,18 +12,19 @@ export default function Plans({ isCurrent }: SlideProps) {
                     <h3 className={styles["plan-title"]}>
                         Básico
                     </h3>
-                    <p className={styles["plan-price"]}>₡15000 <span>/ mes</span></p>
+                    <p className={styles["plan-price"]}>₡15.900 <span>/ mes</span></p>
                     <ul className={styles["plan-features"]}>
                         <li>
-                            <p>Demostración gratis</p>
+                            <p>Demostración gratis.</p>
                         </li>
                         <li>
-                            <p>La ves funcionando antes de pagar</p>
+                            <p>La ves funcionando antes de pagar.</p>
                         </li>
                         <li>
-                            <p>Si no te gusta, no pagas nada</p>
+                            <p>Ideal para pequeñas empresas.</p>
                         </li>
                     </ul>
+                    <button className={styles["plan-button"]}>Quiero mi web <MoveRight /></button>
                 </article>
                 <article className={styles.plan}>
                     <h3 className={styles["plan-title"]}>
@@ -40,6 +42,7 @@ export default function Plans({ isCurrent }: SlideProps) {
                             <p>Si no te gusta, no pagas nada</p>
                         </li>
                     </ul>
+                    <button className={styles["plan-button"]}>Cotizar <MoveRight /></button>
                 </article>
                 <article className={styles.plan}>
                     <h3 className={styles["plan-title"]}>
@@ -57,6 +60,7 @@ export default function Plans({ isCurrent }: SlideProps) {
                             <p>Si no te gusta, no pagas nada</p>
                         </li>
                     </ul>
+                    <button className={styles["plan-button"]}>Cotizar <MoveRight /></button>
                 </article>
             </div>
         </section>

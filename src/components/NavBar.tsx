@@ -79,7 +79,7 @@ export default function Navbar({ currentSlide, colorPalette, setCurrentSlide }: 
                             : "45px 0px 45px 45px"
                         : "2px 0px 2px 2px",
 
-                    boxShadow: !isCircleMenu ? "0 0 0 0 rgba(0,0,0,0)" : open ? "6px 6px 0px 0px #FFC83D" : "6px 6px 0px 0px rgba(0,0,0,0.2)"
+                    boxShadow: !isCircleMenu ? "0,0,0,0 rgba(0,0,0,0)" : open ? colorPalette.cardShadow : colorPalette.floatingShadow
                 }}
                 transition={{
                     width: {
@@ -128,7 +128,7 @@ export default function Navbar({ currentSlide, colorPalette, setCurrentSlide }: 
                                 </div>
                             </motion.nav>
                         ) : isCircleMenu ? (
-                            <MobileMenu open={open} setCurrentSlide={setCurrentSlide} key="mobile"
+                            <MobileMenu open={open} setCurrentSlide={setCurrentSlide} colorPalette={colorPalette} key="mobile"
                                 links={LINKS} />
                         ) : ""
                     }

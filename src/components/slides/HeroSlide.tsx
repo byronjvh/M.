@@ -20,7 +20,7 @@ export default function HeroSlide({ isCurrent, setCurrentSlide }: SlideProps) {
                 </h1>
 
                 <p className="hero-description">
-                    Diseño de páginas web en Costa Rica para negocios y pymes. Webs rápidas, que se ven bien en el celular y que tus clientes encuentran en Google.
+                    Diseño de páginas web para negocios y pequeñas empresas en Costa Rica. Muestra tus servicios, cuenta qué hace especial a tu negocio y haz que tus clientes te encuentren en Google.
                 </p>
 
                 <div className="hero-buttons">

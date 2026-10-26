@@ -41,8 +41,8 @@ export default function HowItWorks({ isCurrent }: SlideProps) {
                 >
                     <span>01</span>
                     <div>
-                        <h3>La hacemos gratis</h3>
-                        <p>Hablamos de tu negocio y construimos tu web sin cobrarte la creación.</p>
+                        <h3>Te escuchamos</h3>
+                        <p>Nos cuentas qué hace tu negocio y qué necesitas mostrar a tus clientes.</p>
                     </div>
                 </motion.article>
                 <motion.article className={styles["HIW-card"]}
@@ -53,7 +53,7 @@ export default function HowItWorks({ isCurrent }: SlideProps) {
                     <span>02</span>
                     <div>
                         <h3>La ves funcionando</h3>
-                        <p>La pruebas de verdad en tu celular y en tu compu, no en una imagen.</p>
+                        <p>Pruebas tu web en el celular o en la computadora. No es una imagen.</p>
                     </div>
                 </motion.article>
                 <motion.article className={`${styles["HIW-card"]} ${styles["HIW-card-highlight"]}`}
@@ -64,7 +64,7 @@ export default function HowItWorks({ isCurrent }: SlideProps) {
                     <span>03</span>
                     <div>
                         <h3>Si te gusta, pagas</h3>
-                        <p>Desde <b>₡15.000*</b> al mes y tu web sigue funcionando.</p>
+                        <p>Si decides continuar, tu web sigue funcionando desde <b>₡15.000*</b> al mes.</p>
                     </div>
                 </motion.article>
             </div>

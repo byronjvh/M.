@@ -16,7 +16,11 @@ export interface palette {
     onLight: string,
     onDark: string,
     hover: string,
-    indicator: string
+    indicator: string,
+    floatingShadow: string,
+    cardShadow: string,
+    text: string,
+    textHover: string
 }
 
 interface Slide {
@@ -35,7 +39,11 @@ const slides: Slide[] = [
             onLight: "#121212",
             onDark: "#F5F3E9",
             hover: "#FFC83D",
-            indicator: "#F5F3E9"
+            indicator: "#F5F3E9",
+            floatingShadow: "0 0 0 0 rgba(0,0,0,0)",
+            cardShadow: "",
+            text: "#F5F3E9",
+            textHover: ""
         },
         content: <HeroSlide isCurrent={false} />,
     },
@@ -47,7 +55,11 @@ const slides: Slide[] = [
             onLight: "#121212",
             onDark: "#F5F3E9",
             hover: "#ffe39c",
-            indicator: "#121212"
+            indicator: "#121212",
+            floatingShadow: "6px 6px 0px 0px rgba(0,0,0,0.2)",
+            cardShadow: "6px 6px 0px 0px #FFC83D",
+            text: "#F5F3E9",
+            textHover: ""
         },
         content: <Problem isCurrent={false} />,
     },
@@ -59,7 +71,11 @@ const slides: Slide[] = [
             onLight: "#121212",
             onDark: "#FFC83D",
             hover: "#ffe39c",
-            indicator: "#121212"
+            indicator: "#121212",
+            floatingShadow: "6px 6px 0px 0px rgba(0,0,0,0.2)",
+            cardShadow: "6px 6px 0px 0px rgba(0,0,0,0.2)",
+            text: "#F5F3E9",
+            textHover: ""
         },
         content: <HowItWorks isCurrent={false} />,
     },
@@ -71,7 +87,11 @@ const slides: Slide[] = [
             onLight: "#FFC83D",
             onDark: "#121212",
             hover: "#333",
-            indicator: "#F5F3E9"
+            indicator: "#F5F3E9",
+            floatingShadow: "6px 6px 0px 0px #F5F3E933",
+            cardShadow: "6px 6px 0px 0px #F5F3E933",
+            text: "#121212",
+            textHover: ""
         },
         content: <Plans isCurrent={false} />,
     },
