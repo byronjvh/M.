@@ -5,6 +5,7 @@ import Problem from "./slides/Problem";
 import { cloneElement, type ReactElement } from "react";
 import HowItWorks from "./slides/HowItWorks";
 import Plans from "./slides/Plans";
+import MyWork from "./slides/MyWork";
 
 export interface SlideProps {
     isCurrent: boolean;
@@ -104,6 +105,24 @@ const slides: Slide[] = [
             textHover: "#333"
         },
         content: <Plans isCurrent={false} />,
+    },
+    {
+        id: "work",
+        name: "Works",
+        palette: {
+            background: "#FF6A55",
+            onLight: "#121212",
+            onDark: "#F5F3E9",
+            hover: "#ffe39c",
+            button: "#FFC83D",
+            buttonHover: "#ffe39c",
+            indicator: "#F5F3E9",
+            floatingShadow: "6px 6px 0px 0px rgba(0,0,0,0.2)",
+            cardShadow: "6px 6px 0px 0px #FFC83D",
+            text: "#F5F3E9",
+            textHover: "#ffe39c"
+        },
+        content: <MyWork isCurrent={false} />,
     },
 ];
 

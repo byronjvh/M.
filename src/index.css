@@ -68,6 +68,8 @@ p {
     display: flex;
     align-items: center;
     gap: 6px;
+    text-transform: uppercase;
+    width: max-content;
 }
 
 .button:hover {

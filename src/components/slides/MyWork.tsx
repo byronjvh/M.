@@ -1,12 +1,14 @@
+import Button from "../Button"
+import type { SlideProps } from "../SlideDeck"
 import styles from "./MyWork.module.css"
 
-export default function MyWork() {
+export default function MyWork({ isCurrent }: SlideProps) {
     return (
         <section className={styles.work}>
-            <div>
+            <div className={styles["work-intro"]}>
                 <h2 className={styles["work-title"]}>Nuestro Trabajo</h2>
                 <p className={styles["work-description"]}>Cada negocio es diferente. Aquí puedes ver algunos de nuestros proyectos.</p>
-                <button className={styles["work-button"]}>Quiero una</button>
+                <Button className={styles["work-button"]}>Quiero el mío</Button>
             </div>
             <div>
                 <article className={styles["project"]}>
