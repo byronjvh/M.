@@ -103,12 +103,12 @@ p {
     bottom: -2px;
     width: 0%;
     height: 2px;
-    background: #FFC83D;
+    background: #ffe39c;
     transition: width 0.2s ease-in-out;
 }
 
 .hero-link:hover {
-    color: #fff;
+    color: #ffe39c;
 }
 
 .hero-link:hover::after {
@@ -195,8 +195,11 @@ main {
 }
 
 .logo {
+    display: block;
     width: 50px;
-    height: auto;
+    height: 50px;
+    mask: url("/logo.svg") center / contain no-repeat;
+    -webkit-mask: url("/logo.svg") center / contain no-repeat;
 }
 
 .hero-description {
@@ -225,12 +228,11 @@ main {
     font-family: "Saira", sans-serif;
     font-weight: 500;
     font-style: normal;
-    color: #f5f3e9;
     font-size: 16px;
     text-decoration: none;
     letter-spacing: 0.5px;
     text-transform: uppercase;
-    transition: color 0.1s ease-out;
+    transition: color 0.1s ease-out, background-color 0.2s ease-out;
     position: relative;
     background-color: transparent;
     border: none;
@@ -244,12 +246,8 @@ main {
     bottom: -2px;
     width: 0%;
     height: 2px;
-    background: #FFC83D;
+    background: currentColor;
     transition: width 0.2s ease-in-out;
-}
-
-.nav-link:not(.nav-button):hover {
-    color: #FFFFFF;
 }
 
 .nav-link:not(.nav-button):hover::after {
@@ -257,17 +255,10 @@ main {
 }
 
 .nav-button {
-    background-color: #121212;
     padding: 12px 20px;
     border-radius: 99999px;
     transition: background-color 0.2s ease-out, color 0.2s ease-out;
-    border: 2px solid #121212;
-}
-
-.nav-button:hover {
-    background-color: #FFC83D;
-    color: #121212;
-    border: 2px solid #121212;
+    border: 2px solid;
 }
 
 .mobile-nav {
@@ -288,10 +279,6 @@ main {
     cursor: pointer;
 }
 
-.mobile-logo-link:hover {
-    filter: sepia(80%) saturate(400%) hue-rotate(355deg) brightness(105%) contrast(90%);
-}
-
 .mobile-links-wrapper {
     display: flex;
     flex-direction: column;
@@ -305,7 +292,6 @@ main {
     font-family: "Saira", sans-serif;
     font-weight: 500;
     font-style: normal;
-    color: #f5f3e9;
     font-size: 14px;
     text-decoration: none;
     letter-spacing: 0.5px;
@@ -320,22 +306,13 @@ main {
     cursor: pointer;
 }
 
-.mobile-nav-link:not(.mobile-nav-button):hover {
-    color: #ffe39c;
-}
-
 .mobile-nav-button {
-    background-color: #FFC83D;
     padding: 10px 18px;
     border-radius: 99999px;
     transition: background-color 0.2s ease-out;
-    color: #121212;
     margin-top: 8px;
     font-weight: 600;
-}
-
-.mobile-nav-button:hover {
-    background-color: #f5f3e9;
+    border: 2px solid;
 }
 
 .menu-open-button {
@@ -601,7 +578,7 @@ main {
 .logo {
     display: block;
     max-width: 100%;
-    height: auto;
+    height: 50px;
 }
 
 .nav {
@@ -620,10 +597,6 @@ main {
     border: none;
     cursor: pointer;
     transition: filter .2s ease-out;
-}
-
-.nav-logo-link:hover {
-    filter: sepia(80%) saturate(400%) hue-rotate(355deg) brightness(105%) contrast(90%);
 }
 
 /* Botón compacto y decoración circular */

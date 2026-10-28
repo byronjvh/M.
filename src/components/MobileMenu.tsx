@@ -1,6 +1,14 @@
 import { motion } from "motion/react";
+import type { palette } from "./SlideDeck";
 
-export default function MobileMenu({ links, open, setCurrentSlide, colorPalette }: any) {
+interface MobileMenuProps {
+    links: { name: string; url: string }[];
+    open: boolean;
+    setCurrentSlide: Function;
+    colorPalette: palette;
+}
+
+export default function MobileMenu({ links, open, setCurrentSlide, colorPalette }: MobileMenuProps) {
 
     return (
         <motion.nav
@@ -16,15 +24,28 @@ export default function MobileMenu({ links, open, setCurrentSlide, colorPalette 
             }}
         >
             <button className="mobile-logo-link" onClick={() => setCurrentSlide(0)} >
-                <img
+                <span
                     className="logo"
-                    src="/logo.svg"
-                    alt="logo"
+                    role="img"
+                    aria-label="M.ai"
+                    style={{ backgroundColor: colorPalette.text }}
                 />
             </button>
             <div className="mobile-links-wrapper">
-                {links.map((el: any, i: number) => (
-                    <motion.button animate={{ color: colorPalette.text }} key={el.name} onClick={() => setCurrentSlide(i + 1)} className={`mobile-nav-link ${el.name === "Cotizar" ? "mobile-nav-button" : ""}`} >{el.name}</motion.button>
+                {links.map((el, i) => (
+                    <motion.button
+                        key={el.name}
+                        onClick={() => setCurrentSlide(i + 1)}
+                        className={`mobile-nav-link ${el.name === "Cotizar" ? "mobile-nav-button" : ""}`}
+                        animate={el.name === "Cotizar"
+                            ? { color: colorPalette.onLight, backgroundColor: colorPalette.button, borderColor: colorPalette.button }
+                            : { color: colorPalette.text }}
+                        whileHover={el.name === "Cotizar"
+                            ? { backgroundColor: colorPalette.buttonHover, borderColor: colorPalette.buttonHover }
+                            : { color: colorPalette.textHover }}
+                    >
+                        {el.name}
+                    </motion.button>
                 ))}
             </div>
         </motion.nav>

@@ -10,11 +10,13 @@ export default function AppLayout() {
         onLight: "#121212",
         onDark: "#F5F3E9",
         hover: "#FFC83D",
+        button: "#121212",
+        buttonHover: "#FFC83D",
         indicator: "#F5F3E9",
         floatingShadow: "0 0 0 0 rgba(0,0,0,0)",
         cardShadow: "0 0 0 0 rgba(0,0,0,0)",
         text: "#F5F3E9",
-        textHover: ""
+        textHover: "#ffe39c"
     });
 
     return (

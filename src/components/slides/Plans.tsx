@@ -1,18 +1,22 @@
 import { MoveRight } from "lucide-react"
 import type { SlideProps } from "../SlideDeck"
 import styles from "./Plans.module.css"
+import { motion } from "motion/react"
 
 export default function Plans({ isCurrent }: SlideProps) {
     return (
         <section className={styles.plans}>
-            <h2 className={styles["plans-title"]}>Elige tu plan</h2>
+            <motion.h2 initial={{ rotate: -30, opacity: 0 }} animate={{ rotate: isCurrent ? 0 : -30, opacity: isCurrent ? 1 : 0 }} transition={{ delay: isCurrent ? 1 : 0, duration: 0.5, type: "spring", damping: 30, stiffness: 500 }} className={styles["plans-title"]}>Elige tu plan</motion.h2>
             <div className={styles["plans-options"]}>
-                <article className={`${styles["plan"]} ${styles["highlighted"]}`}>
+                <motion.article initial={{ y: 40, opacity: 0 }} animate={{ y: isCurrent ? 0 : 40, opacity: isCurrent ? 1 : 0 }} transition={{ delay: isCurrent ? 0.5 : 0, duration: 0.5, type: "spring", damping: 25, stiffness: 300 }} className={`${styles["plan"]} ${styles["highlighted"]}`}>
                     <span className={styles["plan-tag"]}>Empieza aquí</span>
                     <h3 className={styles["plan-title"]}>
                         Básico
                     </h3>
-                    <p className={styles["plan-price"]}>₡15.900 <span>/ mes</span></p>
+                    <span className={styles["plan-price-tag"]}>
+                        * Desde
+                    </span>
+                    <p className={styles["plan-price"]}>₡0 <span>después ₡15.900/mes</span></p>
                     <ul className={styles["plan-features"]}>
                         <li>
                             <p>Demostración gratis.</p>
@@ -21,47 +25,62 @@ export default function Plans({ isCurrent }: SlideProps) {
                             <p>La ves funcionando antes de pagar.</p>
                         </li>
                         <li>
-                            <p>Ideal para pequeñas empresas.</p>
+                            <p>Si no te gusta, no pagas nada.</p>
+                        </li>
+                        <li>
+                            <p>Ideal para pequeñas empresas</p>
                         </li>
                     </ul>
-                    <button className={styles["plan-button"]}>Quiero mi web <MoveRight /></button>
-                </article>
-                <article className={styles.plan}>
+                    <motion.button whileHover={{ backgroundColor: "#333", color: "#F5F3E9" }} transition={{ duration: 0.2, ease: "easeOut" }} className={styles["plan-button"]}>Quiero mi web <MoveRight /></motion.button>
+                </motion.article>
+                <motion.article initial={{ y: 40, opacity: 0 }} animate={{ y: isCurrent ? 0 : 40, opacity: isCurrent ? 1 : 0 }} transition={{ delay: isCurrent ? 0.6 : 0, duration: 0.5, type: "spring", damping: 25, stiffness: 300 }} className={styles.plan}>
                     <h3 className={styles["plan-title"]}>
-                        Básico
+                        Negocio
                     </h3>
-                    <p className={styles["plan-price"]}>₡15000 <span>/ mes</span></p>
+                    <span className={styles["plan-price-tag"]}>
+                        * Desde
+                    </span>
+                    <p className={styles["plan-price"]}>₡109.900 <span>después ₡35.000/mes</span></p>
                     <ul className={styles["plan-features"]}>
                         <li>
-                            <p>Demostración gratis</p>
+                            <p>Diseño exclusivo para tu negocio</p>
                         </li>
                         <li>
-                            <p>La ves funcionando antes de pagar</p>
+                            <p>Funciones que simplifican tu trabajo</p>
                         </li>
                         <li>
-                            <p>Si no te gusta, no pagas nada</p>
+                            <p>Procesos más eficientes y organizados</p>
+                        </li>
+                        <li>
+                            <p>Ideal para pequeñas y medianas empresas</p>
                         </li>
                     </ul>
-                    <button className={styles["plan-button"]}>Cotizar <MoveRight /></button>
-                </article>
-                <article className={styles.plan}>
+                    <motion.button whileHover={{ backgroundColor: "#333" }} transition={{ duration: 0.2, ease: "easeOut" }} className={styles["plan-button"]}>Cotizar <MoveRight /></motion.button>
+                </motion.article>
+                <motion.article initial={{ y: 40, opacity: 0 }} animate={{ y: isCurrent ? 0 : 40, opacity: isCurrent ? 1 : 0 }} transition={{ delay: isCurrent ? 0.7 : 0, duration: 0.5, type: "spring", damping: 25, stiffness: 300 }} className={styles.plan}>
                     <h3 className={styles["plan-title"]}>
-                        Básico
+                        A medida
                     </h3>
-                    <p className={styles["plan-price"]}>₡15000 <span>/ mes</span></p>
+                    <span className={styles["plan-price-tag"]}>
+                        * Desde
+                    </span>
+                    <p className={styles["plan-price"]}>₡290.000 <span> después ₡70.000/mes</span></p>
                     <ul className={styles["plan-features"]}>
                         <li>
-                            <p>Demostración gratis</p>
+                            <p>Desarrollo totalmente personalizado</p>
                         </li>
                         <li>
-                            <p>La ves funcionando antes de pagar</p>
+                            <p>Funciones adaptadas a tus objetivos</p>
                         </li>
                         <li>
-                            <p>Si no te gusta, no pagas nada</p>
+                            <p>Una solución creada para tu proyecto</p>
+                        </li>
+                        <li>
+                            <p>Ideal para proyectos de gran alcance</p>
                         </li>
                     </ul>
-                    <button className={styles["plan-button"]}>Cotizar <MoveRight /></button>
-                </article>
+                    <motion.button whileHover={{ backgroundColor: "#333" }} transition={{ duration: 0.2, ease: "easeOut" }} className={styles["plan-button"]}>Cotizar <MoveRight /></motion.button>
+                </motion.article>
             </div>
         </section>
     )

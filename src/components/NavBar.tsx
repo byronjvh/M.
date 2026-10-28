@@ -79,7 +79,7 @@ export default function Navbar({ currentSlide, colorPalette, setCurrentSlide }: 
                             : "45px 0px 45px 45px"
                         : "2px 0px 2px 2px",
 
-                    boxShadow: !isCircleMenu ? "0,0,0,0 rgba(0,0,0,0)" : open ? colorPalette.cardShadow : colorPalette.floatingShadow
+                    boxShadow: !isCircleMenu ? "0px 0px 0px 0px rgba(0,0,0,0)" : open ? colorPalette.cardShadow : colorPalette.floatingShadow
                 }}
                 transition={{
                     width: {
@@ -115,15 +115,28 @@ export default function Navbar({ currentSlide, colorPalette, setCurrentSlide }: 
                                 transition={{ duration: 0.25, ease: "easeOut" }}
                             >
                                 <button className="nav-logo-link" onClick={() => setCurrentSlide(0)}>
-                                    <img
+                                    <span
                                         className="logo"
-                                        src="/logo.svg"
-                                        alt="logo"
+                                        role="img"
+                                        aria-label="M.ai"
+                                        style={{ backgroundColor: colorPalette.text }}
                                     />
                                 </button>
                                 <div className="links-wrapper">
                                     {LINKS.map((el, i) => (
-                                        <button key={el.name} onClick={() => setCurrentSlide(i + 1)} className={`nav-link ${el.name === "Cotizar" ? "nav-button" : ""}`} >{el.name}</button>
+                                        <motion.button
+                                            key={el.name}
+                                            onClick={() => setCurrentSlide(i + 1)}
+                                            className={`nav-link ${el.name === "Cotizar" ? "nav-button" : ""}`}
+                                            animate={el.name === "Cotizar"
+                                                ? { color: colorPalette.onDark, backgroundColor: colorPalette.button, borderColor: colorPalette.button }
+                                                : { color: colorPalette.text }}
+                                            whileHover={el.name === "Cotizar"
+                                                ? { color: colorPalette.onLight, backgroundColor: colorPalette.buttonHover }
+                                                : { color: colorPalette.textHover }}
+                                        >
+                                            {el.name}
+                                        </motion.button>
                                     ))}
                                 </div>
                             </motion.nav>
