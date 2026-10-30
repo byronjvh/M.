@@ -131,25 +131,65 @@
 }
 
 .plan-button {
-    border: 2px solid #F5F3E9;
-    background-color: #121212;
-    color: #F5F3E9;
-    text-transform: uppercase;
-    font-weight: 700;
-    font-family: "Saira", sans-serif;
-    padding-block: 10px;
-    font-size: 18px;
-    letter-spacing: 1px;
     margin-top: 16px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
 }
 
-.plan.highlighted .plan-button {
-    border-color: transparent;
-    background-color: #121212;
-    color: #FFC83D;
+@media (max-width: 900px) {
+    .plans {
+        justify-content: flex-start;
+    }
+
+    .plans-title {
+        font-size: clamp(4.5rem, 12vw, 6.5rem);
+    }
+
+    .plan {
+        min-width: 220px;
+        padding: 20px;
+    }
+
+    .plan-price {
+        font-size: 64px;
+    }
+}
+
+@media (max-width: 700px) {
+    .plans {
+        gap: 12px;
+    }
+
+    .plans-title {
+        font-size: clamp(3.75rem, 16vw, 5rem);
+    }
+
+    .plans-options {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .plan {
+        min-width: 0;
+        padding: 18px;
+    }
+
+    .plan:not(.highlighted) .plan-title {
+        margin-top: 0;
+    }
+
+    .plan-price {
+        font-size: 56px;
+        margin-bottom: 8px;
+    }
+
+    .plan-price span {
+        font-size: 16px;
+    }
+
+    .plan-features li {
+        padding: 8px 0;
+    }
+
+    .plan-button {
+        margin-top: 8px;
+    }
 }

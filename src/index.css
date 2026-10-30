@@ -656,6 +656,73 @@ main {
 }
 
 @media (max-width: 700px) {
+    .slide {
+        padding-inline: 12px;
+    }
+
+    .slide-content {
+        height: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+        overscroll-behavior: contain;
+        padding: 104px 4px 44px;
+    }
+
+    .slide-hero {
+        padding-inline: 12px;
+    }
+
+    h1 {
+        font-size: clamp(3rem, 13vw, 5rem);
+        text-wrap: wrap;
+    }
+
+    .hero-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .hero-text {
+        width: 100%;
+    }
+
+    .hero-description {
+        font-size: 16px;
+    }
+
+    .hero-buttons {
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: 20px;
+    }
+
+    .hero-cards {
+        align-self: center;
+        flex: 0 0 260px;
+        max-width: 320px;
+    }
+
+    .hero-cards .sticker {
+        right: 0;
+    }
+
+    .animated-card {
+        width: 170px;
+        height: 230px;
+        right: 115px;
+        top: 0;
+    }
+
+    .animated-card.dark {
+        top: 44px;
+    }
+
+    .slide-indicator-text {
+        margin-left: 16px;
+        margin-bottom: 8px;
+        font-size: 14px;
+    }
+
     .navbar-container {
         padding-inline: 12px;
     }

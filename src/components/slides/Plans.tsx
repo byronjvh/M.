@@ -1,4 +1,4 @@
-import { MoveRight } from "lucide-react"
+import ActionButton from "../ActionButton"
 import type { SlideProps } from "../SlideDeck"
 import styles from "./Plans.module.css"
 import { motion } from "motion/react"
@@ -31,7 +31,16 @@ export default function Plans({ isCurrent }: SlideProps) {
                             <p>Ideal para pequeñas empresas</p>
                         </li>
                     </ul>
-                    <motion.button whileHover={{ backgroundColor: "#333", color: "#F5F3E9" }} transition={{ duration: 0.2, ease: "easeOut" }} className={styles["plan-button"]}>Quiero mi web <MoveRight /></motion.button>
+                    <ActionButton
+                        className={styles["plan-button"]}
+                        backgroundColor="#121212"
+                        borderColor="transparent"
+                        color="#FFC83D"
+                        hoverBackgroundColor="#333"
+                        hoverColor="#F5F3E9"
+                    >
+                        Quiero mi web
+                    </ActionButton>
                 </motion.article>
                 <motion.article initial={{ y: 40, opacity: 0 }} animate={{ y: isCurrent ? 0 : 40, opacity: isCurrent ? 1 : 0 }} transition={{ delay: isCurrent ? 0.6 : 0, duration: 0.5, type: "spring", damping: 25, stiffness: 300 }} className={styles.plan}>
                     <h3 className={styles["plan-title"]}>
@@ -55,7 +64,7 @@ export default function Plans({ isCurrent }: SlideProps) {
                             <p>Ideal para pequeñas y medianas empresas</p>
                         </li>
                     </ul>
-                    <motion.button whileHover={{ backgroundColor: "#333" }} transition={{ duration: 0.2, ease: "easeOut" }} className={styles["plan-button"]}>Cotizar <MoveRight /></motion.button>
+                    <ActionButton className={styles["plan-button"]}>Cotizar</ActionButton>
                 </motion.article>
                 <motion.article initial={{ y: 40, opacity: 0 }} animate={{ y: isCurrent ? 0 : 40, opacity: isCurrent ? 1 : 0 }} transition={{ delay: isCurrent ? 0.7 : 0, duration: 0.5, type: "spring", damping: 25, stiffness: 300 }} className={styles.plan}>
                     <h3 className={styles["plan-title"]}>
@@ -79,7 +88,7 @@ export default function Plans({ isCurrent }: SlideProps) {
                             <p>Ideal para proyectos de gran alcance</p>
                         </li>
                     </ul>
-                    <motion.button whileHover={{ backgroundColor: "#333" }} transition={{ duration: 0.2, ease: "easeOut" }} className={styles["plan-button"]}>Cotizar <MoveRight /></motion.button>
+                    <ActionButton className={styles["plan-button"]}>Cotizar</ActionButton>
                 </motion.article>
             </div>
         </section>

@@ -81,3 +81,49 @@
 .HIW-card-highlight p {
     color: #FFC83D;
 }
+
+@media (max-width: 900px) {
+    .HIW {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 24px;
+        padding-right: 0;
+    }
+
+    .HIW-title {
+        font-size: clamp(4.5rem, 13vw, 7rem);
+    }
+
+    .HIW-cards {
+        width: 100%;
+    }
+
+    .HIW-card {
+        max-width: 100%;
+        padding: 16px 0;
+        gap: 16px;
+    }
+}
+
+@media (max-width: 700px) {
+    .HIW-title {
+        font-size: clamp(3.75rem, 16vw, 5rem);
+    }
+
+    .HIW-description {
+        font-size: 18px;
+    }
+
+    .HIW-card h3 {
+        font-size: 26px;
+    }
+
+    .HIW-card p {
+        font-size: 14px;
+    }
+
+    .HIW-card span {
+        font-size: 48px;
+    }
+}

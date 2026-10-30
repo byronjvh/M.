@@ -6,6 +6,7 @@ import { cloneElement, type ReactElement } from "react";
 import HowItWorks from "./slides/HowItWorks";
 import Plans from "./slides/Plans";
 import MyWork from "./slides/MyWork";
+import Contact from "./slides/Contact";
 
 export interface SlideProps {
     isCurrent: boolean;
@@ -116,13 +117,31 @@ const slides: Slide[] = [
             hover: "#ffe39c",
             button: "#FFC83D",
             buttonHover: "#ffe39c",
-            indicator: "#F5F3E9",
+            indicator: "#121212",
             floatingShadow: "6px 6px 0px 0px rgba(0,0,0,0.2)",
             cardShadow: "6px 6px 0px 0px #FFC83D",
             text: "#F5F3E9",
             textHover: "#ffe39c"
         },
         content: <MyWork isCurrent={false} />,
+    },
+    {
+        id: "contact",
+        name: "Contact",
+        palette: {
+            background: "#009982",
+            onLight: "#121212",
+            onDark: "#F5F3E9",
+            hover: "#ffe39c",
+            button: "#FFC83D",
+            buttonHover: "#ffe39c",
+            indicator: "#F5F3E9",
+            floatingShadow: "6px 6px 0px 0px rgba(0,0,0,0.2)",
+            cardShadow: "6px 6px 0px 0px #FFC83D",
+            text: "#F5F3E9",
+            textHover: "#ffe39c"
+        },
+        content: <Contact isCurrent={false} />,
     },
 ];
 

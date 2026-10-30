@@ -44,19 +44,35 @@ const LINKS = [
 export default function Navbar({ currentSlide, colorPalette, setCurrentSlide }: NavbarProps) {
     const [navbarState, setNavbarState] = useState<NavbarState>(NAVBAR_STATE.DEFAULT)
     const [open, setOpen] = useState<boolean>(false)
+    const [isMobile, setIsMobile] = useState(false)
 
     useEffect(() => {
-        if (currentSlide > 0) return setNavbarState(NAVBAR_STATE.CIRCLE)
+        const mediaQuery = window.matchMedia("(max-width: 700px)")
+        const updateIsMobile = () => setIsMobile(mediaQuery.matches)
+
+        updateIsMobile()
+        mediaQuery.addEventListener("change", updateIsMobile)
+
+        return () => mediaQuery.removeEventListener("change", updateIsMobile)
+    }, [])
+
+    useEffect(() => {
+        if (currentSlide > 0 || isMobile) return setNavbarState(NAVBAR_STATE.CIRCLE)
         else {
             setNavbarState(NAVBAR_STATE.DEFAULT)
             setOpen(false)
         }
-    }, [currentSlide])
+    }, [currentSlide, isMobile])
 
     const toggleMenu = () => {
         if (navbarState === NAVBAR_STATE.DEFAULT) return
         if (open) setOpen(false)
         else setOpen(true)
+    }
+
+    const handleMobileMenuSelect = (index: number) => {
+        setCurrentSlide(index)
+        setOpen(false)
     }
 
     const isCircleMenu = navbarState === NAVBAR_STATE.CIRCLE
@@ -141,7 +157,7 @@ export default function Navbar({ currentSlide, colorPalette, setCurrentSlide }: 
                                 </div>
                             </motion.nav>
                         ) : isCircleMenu ? (
-                            <MobileMenu open={open} setCurrentSlide={setCurrentSlide} colorPalette={colorPalette} key="mobile"
+                            <MobileMenu open={open} setCurrentSlide={handleMobileMenuSelect} colorPalette={colorPalette} key="mobile"
                                 links={LINKS} />
                         ) : ""
                     }

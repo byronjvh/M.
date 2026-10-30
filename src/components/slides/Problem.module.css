@@ -79,3 +79,53 @@
 .problem-card-3 {
     background-color: #FF6A55;
 }
+
+@media (max-width: 900px) {
+    .problem {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 24px;
+        padding-right: 0;
+    }
+
+    .problem-intro {
+        max-width: 100%;
+    }
+
+    .problem-title {
+        font-size: clamp(4.5rem, 13vw, 7rem);
+    }
+
+    .problem-cards {
+        width: 100%;
+        gap: 12px;
+    }
+
+    .problem-card {
+        max-width: 100%;
+        padding: 18px;
+    }
+}
+
+@media (max-width: 700px) {
+    .problem-title {
+        font-size: clamp(3.75rem, 16vw, 5rem);
+    }
+
+    .problem-decoration {
+        padding: 12px;
+    }
+
+    .problem-description {
+        font-size: 18px;
+    }
+
+    .problem-card p {
+        font-size: 18px;
+    }
+
+    .problem-card span {
+        font-size: 48px;
+    }
+}

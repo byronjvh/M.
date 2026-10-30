@@ -1,6 +1,7 @@
 .work {
     display: flex;
     align-items: center;
+    gap: 64px;
     height: 100%;
 }
 
@@ -28,4 +29,139 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+}
+
+.work-button {
+    margin-top: 16px;
+}
+
+.project {
+    width: 100%;
+    background-color: #f5F3E9;
+    border: 2px solid #121212;
+    box-shadow: 6px 6px 0 0 rgba(0, 0, 0, 1);
+}
+
+.project-link {
+    position: absolute;
+    top: 40px;
+    left: calc(50% + var(--card-offset) - 140px);
+    display: block;
+    width: 280px;
+    text-decoration: none;
+    transform-origin: center bottom;
+}
+
+.project-header {
+    background-color: #121212;
+    height: 32px;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    padding: 12px;
+}
+
+.project-image {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    object-position: center center;
+}
+
+.project-text {
+    padding: 12px 16px;
+    border-top: 2px solid #121212;
+}
+
+.project-title {
+    font-family: "Saira Extra Condensed", sans-serif;
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 1px;
+    font-size: 28px;
+    line-height: 1.2;
+    color: #121212;
+}
+
+.project-text p {
+    font-family: "Saira", sans-serif;
+    font-size: 14px;
+    color: #121212;
+    line-height: 1.2;
+    color: #121212;
+}
+
+.project-header span {
+    height: 10px;
+    width: 10px;
+    border-radius: 10px;
+    background-color: #f5F3E9;
+}
+
+.projects-list {
+    position: relative;
+    flex: 0 0 620px;
+    height: 440px;
+}
+
+@media (max-width: 1184px) {
+    .work {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 16px;
+    }
+
+    .work-intro {
+        max-width: 100%;
+        gap: 8px;
+    }
+
+    .work-title {
+        font-size: clamp(4rem, 11vw, 7rem);
+    }
+
+    .work-button {
+        margin-top: 8px;
+    }
+
+    .projects-list {
+        align-self: center;
+        flex: 0 1 620px;
+        width: min(620px, 100%);
+        height: 400px;
+    }
+}
+
+@media (max-width: 600px) {
+    .work-title {
+        font-size: clamp(3.5rem, 15vw, 5rem);
+    }
+
+    .work-description {
+        font-size: 16px;
+    }
+
+    .project-link {
+        top: 28px;
+        width: min(220px, 70vw);
+        left: calc(50% - min(110px, 35vw));
+    }
+
+    .project-link:first-child {
+        left: calc(50% - min(110px, 35vw) - 1.5vw);
+    }
+
+    .project-link:last-child {
+        left: calc(50% - min(110px, 35vw) + 1.5vw);
+    }
+
+    .project-title {
+        font-size: 24px;
+    }
+
+    .projects-list {
+        flex-basis: 340px;
+        height: 340px;
+    }
 }
