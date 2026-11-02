@@ -29,7 +29,7 @@
     line-height: 1.25;
 }
 
-.contact-intro :global(.sticker) {
+.contact-intro .contact-sticker {
     top: -40px;
     right: -40px;
 }
@@ -151,7 +151,7 @@
         font-size: 18px;
     }
 
-    .contact-intro :global(.sticker) {
+    .contact-intro .contact-sticker {
         top: 0;
         right: 0;
     }
@@ -191,7 +191,7 @@
         font-size: 15px;
     }
 
-    .contact-intro :global(.sticker) {
+    .contact-intro .contact-sticker {
         top: 4px;
         right: 0;
         width: 92px;

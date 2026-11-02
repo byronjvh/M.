@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
+import styles from "./Sticker.module.css";
 
-export default function Sticker() {
+export default function Sticker({ className }: { className?: string }) {
     return (
         <motion.div
             initial={{
@@ -18,7 +19,7 @@ export default function Sticker() {
                 ease: [0.3, 1.4, 0.6, 1.6],
             }}
 
-            className="sticker">
+            className={`${styles.sticker} ${className ?? ""}`}>
             Primero la ves. Después pagas.
         </motion.div>
     );

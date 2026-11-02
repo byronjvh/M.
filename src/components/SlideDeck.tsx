@@ -7,6 +7,7 @@ import HowItWorks from "./slides/HowItWorks";
 import Plans from "./slides/Plans";
 import MyWork from "./slides/MyWork";
 import Contact from "./slides/Contact";
+import styles from "./SlideDeck.module.css";
 
 export interface SlideProps {
     isCurrent: boolean;
@@ -189,14 +190,14 @@ export default function SlideDeck({ currentSlide, setCurrentSlide, setColorPalet
     }, [currentSlide])
 
     return (
-        <div className="deck">
+        <div className={styles.deck}>
             {slides.map((slide, index) => {
                 const isCurrent = index === currentSlide;
                 const isPrevious = index < currentSlide;
                 return (
                     <motion.section
                         key={slide.id}
-                        className={`slide slide-${slide.name.toLowerCase()}`}
+                        className={`${styles.slide} ${slide.id === "hero" ? styles.heroSlide : ""}`}
                         style={{
                             backgroundColor: slide.palette.background,
                             zIndex: isPrevious ? 20 : slides.length - index,
@@ -211,7 +212,7 @@ export default function SlideDeck({ currentSlide, setCurrentSlide, setColorPalet
                             ease: [0.65, 0, 0.35, 1],
                         }}
                     >
-                        <div className="slide-content">
+                        <div className={styles.slideContent}>
                             {cloneElement(slide.content, { isCurrent, setCurrentSlide })}
                         </div>
                     </motion.section>

@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import styles from "./AnimatedCard.module.css";
 export default function AnimatedCardDark() {
     return (
         <motion.div
@@ -9,18 +10,18 @@ export default function AnimatedCardDark() {
                 ease: [.2, .6, 0.45, 1.25],
                 delay: 0.3,
             }}
-            className="animated-card dark"
+            className={`${styles.card} ${styles.dark}`}
         >
-            <div className="animated-card-tag">
+            <div className={styles.tag}>
                 Después
             </div>
-            <div className="animated-card-content">
-                <header className="animated-card-header">
+            <div className={styles.cardContent}>
+                <header className={styles.header}>
                     <span></span>
                     <span></span>
                     <span></span>
                 </header>
-                <div className="animated-card-body">
+                <div className={styles.body}>
                     <motion.span
                         initial={{ scaleX: 0 }}
                         animate={{ scaleX: 1 }}
@@ -29,7 +30,7 @@ export default function AnimatedCardDark() {
                             ease: "easeOut",
                             delay: 0.6,
                         }}
-                        className="animated-card-title"></motion.span>
+                        className={styles.title}></motion.span>
                     <motion.span
                         initial={{ scaleX: 0 }}
                         animate={{ scaleX: 1 }}
@@ -38,7 +39,7 @@ export default function AnimatedCardDark() {
                             ease: "easeOut",
                             delay: 0.7,
                         }}
-                        className="animated-card-title2"></motion.span>
+                        className={styles.title2}></motion.span>
                     <motion.span
                         initial={{ scaleX: 0 }}
                         animate={{ scaleX: 1 }}
@@ -47,7 +48,7 @@ export default function AnimatedCardDark() {
                             ease: "easeOut",
                             delay: 0.8,
                         }}
-                        className="animated-card-description"></motion.span>
+                        className={styles.description}></motion.span>
                     <motion.span
                         initial={{ scaleX: 0 }}
                         animate={{ scaleX: 1 }}
@@ -56,7 +57,7 @@ export default function AnimatedCardDark() {
                             ease: "easeOut",
                             delay: 0.9,
                         }}
-                        className="animated-card-description2"></motion.span>
+                        className={styles.description2}></motion.span>
                     <motion.span
                         initial={{ scaleX: 0 }}
                         animate={{ scaleX: 1 }}
@@ -65,7 +66,7 @@ export default function AnimatedCardDark() {
                             ease: "easeOut",
                             delay: 1,
                         }}
-                        className="animated-card-button"></motion.span>
+                        className={styles.button}></motion.span>
                 </div>
             </div>
         </motion.div >

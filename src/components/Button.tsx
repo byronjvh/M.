@@ -1,6 +1,7 @@
 import { MoveRight } from "lucide-react";
 import { motion } from "motion/react"
 import type React from "react";
+import styles from "./Button.module.css";
 
 
 interface ButtonProps {
@@ -17,7 +18,7 @@ export default function Button({ children = "Quiero mi web", className, href, ta
         whileHover: { y: -8, scale: 1.02 },
         whileTap: { y: 0, scale: 1 },
         transition: { type: "spring" as const, stiffness: 300, damping: 15 },
-        className: `button ${className ?? ""}`,
+        className: `${styles.button} ${className ?? ""}`,
     }
 
     if (href) {

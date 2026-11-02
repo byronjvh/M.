@@ -1,5 +1,6 @@
 import Poop from "./icons/Poop";
 import { motion } from "motion/react";
+import styles from "./AnimatedCard.module.css";
 
 export default function AnimatedCard() {
     return (
@@ -10,17 +11,17 @@ export default function AnimatedCard() {
                 duration: 0.8,
                 ease: [.2, .6, 0.45, 1.25],
             }}
-            className="animated-card">
-            <div className="animated-card-tag">
+            className={styles.card}>
+            <div className={styles.tag}>
                 Antes
             </div>
-            <div className="animated-card-content">
-                <header className="animated-card-header">
+            <div className={styles.cardContent}>
+                <header className={styles.header}>
                     <span></span>
                     <span></span>
                     <span></span>
                 </header>
-                <div className="animated-card-body">
+                <div>
                     <Poop size={150} />
                 </div>
             </div>

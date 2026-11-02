@@ -2,6 +2,7 @@ import { useState } from "react";
 import SlideDeck, { type palette } from "./SlideDeck";
 import SlideIndicator from "./SlideIndicator";
 import Navbar from "./NavBar";
+import styles from "./AppLayout.module.css";
 
 export default function AppLayout() {
     const [currentSlide, setCurrentSlide] = useState<number>(0);
@@ -20,10 +21,10 @@ export default function AppLayout() {
     });
 
     return (
-        <div className="layout">
+        <div className={styles.layout}>
             <Navbar colorPalette={colorPalette} currentSlide={currentSlide} setCurrentSlide={setCurrentSlide} />
 
-            <main className="content">
+            <main>
                 <SlideDeck
                     currentSlide={currentSlide}
                     setCurrentSlide={setCurrentSlide}

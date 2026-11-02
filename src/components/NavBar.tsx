@@ -4,6 +4,7 @@ import MenuCircle from "./MenuCircle";
 import { ArrowUpRight, X } from "lucide-react";
 import MobileMenu from "./MobileMenu";
 import type { palette } from "./SlideDeck";
+import styles from "./NavBar.module.css";
 
 interface NavbarProps {
     currentSlide: number;
@@ -78,11 +79,11 @@ export default function Navbar({ currentSlide, colorPalette, setCurrentSlide }: 
     const isCircleMenu = navbarState === NAVBAR_STATE.CIRCLE
 
     return (
-        <div className="navbar-container">
+        <div className={styles.navbarContainer}>
 
 
             <motion.header
-                className="navbar"
+                className={styles.navbar}
                 style={{ alignItems: isCircleMenu ? "" : "center" }}
                 animate={{
                     backgroundColor: isCircleMenu ? colorPalette.onLight : "rgba(0,0,0,0)",
@@ -124,26 +125,26 @@ export default function Navbar({ currentSlide, colorPalette, setCurrentSlide }: 
                         navbarState === NAVBAR_STATE.DEFAULT ? (
 
                             <motion.nav key="default"
-                                className="nav"
+                                className={styles.nav}
                                 initial={{ opacity: 0, y: -12 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, width: "10%" }}
                                 transition={{ duration: 0.25, ease: "easeOut" }}
                             >
-                                <button className="nav-logo-link" onClick={() => setCurrentSlide(0)}>
+                                <button className={styles.navLogoLink} onClick={() => setCurrentSlide(0)}>
                                     <span
-                                        className="logo"
+                                        className={styles.logo}
                                         role="img"
                                         aria-label="M.ai"
                                         style={{ backgroundColor: colorPalette.text }}
                                     />
                                 </button>
-                                <div className="links-wrapper">
+                                <div className={styles.linksWrapper}>
                                     {LINKS.map((el, i) => (
                                         <motion.button
                                             key={el.name}
                                             onClick={() => setCurrentSlide(i + 1)}
-                                            className={`nav-link ${el.name === "Cotizar" ? "nav-button" : ""}`}
+                                            className={`${styles.navLink} ${el.name === "Cotizar" ? styles.navButton : ""}`}
                                             animate={el.name === "Cotizar"
                                                 ? { color: colorPalette.onDark, backgroundColor: colorPalette.button, borderColor: colorPalette.button }
                                                 : { color: colorPalette.text }}
@@ -164,7 +165,7 @@ export default function Navbar({ currentSlide, colorPalette, setCurrentSlide }: 
                 </AnimatePresence>
 
                 <AnimatePresence>
-                    <motion.button onClick={toggleMenu} className="menu-open-button"
+                    <motion.button onClick={toggleMenu} className={styles.menuOpenButton}
                         initial={{ x: -200, opacity: 0, scale: 0, color: colorPalette.onLight }}
                         animate={{ x: isCircleMenu ? 0 : -200, opacity: isCircleMenu ? 1 : 0, scale: isCircleMenu ? 1 : 0, color: colorPalette.onDark }}
                         whileHover={{ color: colorPalette.hover }}
@@ -180,7 +181,7 @@ export default function Navbar({ currentSlide, colorPalette, setCurrentSlide }: 
                                 whileHover={{ backgroundColor: colorPalette.hover }}
                                 exit={{ opacity: 0, rotate: 90, scale: 0.7 }}
                                 transition={{ duration: 0.2, ease: "easeInOut" }}
-                                className="menu-open-icon">
+                                className={styles.menuOpenIcon}>
                                 {
                                     open ? (
                                         <X size={28} />

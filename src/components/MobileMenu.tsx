@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import type { palette } from "./SlideDeck";
+import styles from "./MobileMenu.module.css";
 
 interface MobileMenuProps {
     links: { name: string; url: string }[];
@@ -12,7 +13,7 @@ export default function MobileMenu({ links, open, setCurrentSlide, colorPalette 
 
     return (
         <motion.nav
-            className="mobile-nav"
+            className={styles.mobileNav}
             initial={{ opacity: 0, y: -8 }}
             animate={{
                 opacity: open ? 1 : 0,
@@ -23,20 +24,20 @@ export default function MobileMenu({ links, open, setCurrentSlide, colorPalette 
                 ease: "easeOut",
             }}
         >
-            <button className="mobile-logo-link" onClick={() => setCurrentSlide(0)} >
+            <button className={styles.mobileLogoLink} onClick={() => setCurrentSlide(0)} >
                 <span
-                    className="logo"
+                    className={styles.logo}
                     role="img"
                     aria-label="M.ai"
                     style={{ backgroundColor: colorPalette.text }}
                 />
             </button>
-            <div className="mobile-links-wrapper">
+            <div className={styles.mobileLinksWrapper}>
                 {links.map((el, i) => (
                     <motion.button
                         key={el.name}
                         onClick={() => setCurrentSlide(i + 1)}
-                        className={`mobile-nav-link ${el.name === "Cotizar" ? "mobile-nav-button" : ""}`}
+                        className={`${styles.mobileNavLink} ${el.name === "Cotizar" ? styles.mobileNavButton : ""}`}
                         animate={el.name === "Cotizar"
                             ? { color: colorPalette.onLight, backgroundColor: colorPalette.button, borderColor: colorPalette.button }
                             : { color: colorPalette.text }}

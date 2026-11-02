@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import styles from "./Poop.module.css";
 
 export default function Poop({ size = 200 }: { size?: number }) {
     return <motion.svg
@@ -10,7 +11,7 @@ export default function Poop({ size = 200 }: { size?: number }) {
             repeat: Infinity,
             ease: "easeInOut",
         }}
-        className="poop"
+        className={styles.poop}
         xmlns="http://www.w3.org/2000/svg"
         width={`${size}px`}
         height={`${size}px`}

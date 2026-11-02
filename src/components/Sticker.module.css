@@ -1,0 +1,26 @@
+.sticker {
+    position: absolute;
+    height: 115px;
+    width: 115px;
+    border-radius: 99999px;
+    top: 40px;
+    right: -30px;
+    background-color: #ffc83d;
+    color: #121212;
+    padding: 14px 16px;
+    line-height: 0.95;
+    text-align: center;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-wrap: wrap;
+    font-family: "Saira Extra Condensed", sans-serif;
+    font-size: 23px;
+    border: 2px solid #121212;
+    box-shadow: 6px 6px 0 rgba(0, 0, 0, 1);
+}
+
+@media (max-width: 700px) {
+    .sticker {
+        right: 0;
+    }
+}

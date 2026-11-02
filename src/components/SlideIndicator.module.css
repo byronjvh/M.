@@ -1,0 +1,32 @@
+.slideIndicator {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.text {
+    margin-left: 64px;
+    margin-bottom: 16px;
+    font-size: 18px;
+    font-family: "Saira", sans-serif;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #f5f3e9;
+}
+
+.bar {
+    width: 100%;
+    height: 10px;
+    background-color: #f5f3e9;
+}
+
+@media (max-width: 700px) {
+    .text {
+        margin-left: 16px;
+        margin-bottom: 8px;
+        font-size: 14px;
+    }
+}

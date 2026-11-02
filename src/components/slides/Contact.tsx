@@ -24,7 +24,7 @@ export default function Contact({ isCurrent }: SlideProps) {
                 <p className={styles["contact-description"]}>
                     Cuéntanos sobre tu negocio y hagamos realidad una web que te ayude a crecer.
                 </p>
-                <Sticker />
+                <Sticker className={styles["contact-sticker"]} />
                 <div className={styles["contact-whatsapp"]}>
                     <span>¿Prefieres hablar directamente?</span>
                     <Button
