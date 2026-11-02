@@ -10,6 +10,8 @@ interface NavbarProps {
     currentSlide: number;
     colorPalette: palette;
     setCurrentSlide: Function;
+    open: boolean;
+    setOpen: (open: boolean) => void;
 }
 
 const NAVBAR_STATE = {
@@ -42,9 +44,8 @@ const LINKS = [
     }
 ]
 
-export default function Navbar({ currentSlide, colorPalette, setCurrentSlide }: NavbarProps) {
+export default function Navbar({ currentSlide, colorPalette, setCurrentSlide, open, setOpen }: NavbarProps) {
     const [navbarState, setNavbarState] = useState<NavbarState>(NAVBAR_STATE.DEFAULT)
-    const [open, setOpen] = useState<boolean>(false)
     const [isMobile, setIsMobile] = useState(false)
 
     useEffect(() => {

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
 import SlideDeck, { type palette } from "./SlideDeck";
 import SlideIndicator from "./SlideIndicator";
 import Navbar from "./NavBar";
@@ -6,6 +7,7 @@ import styles from "./AppLayout.module.css";
 
 export default function AppLayout() {
     const [currentSlide, setCurrentSlide] = useState<number>(0);
+    const [menuOpen, setMenuOpen] = useState(false);
     const [colorPalette, setColorPalette] = useState<palette>({
         background: "#009982",
         onLight: "#121212",
@@ -22,7 +24,27 @@ export default function AppLayout() {
 
     return (
         <div className={styles.layout}>
-            <Navbar colorPalette={colorPalette} currentSlide={currentSlide} setCurrentSlide={setCurrentSlide} />
+            <AnimatePresence>
+                {menuOpen && (
+                    <motion.button
+                        className={styles.backdrop}
+                        aria-label="Cerrar menú"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2, ease: "easeOut" }}
+                        onClick={() => setMenuOpen(false)}
+                    />
+                )}
+            </AnimatePresence>
+
+            <Navbar
+                colorPalette={colorPalette}
+                currentSlide={currentSlide}
+                setCurrentSlide={setCurrentSlide}
+                open={menuOpen}
+                setOpen={setMenuOpen}
+            />
 
             <main>
                 <SlideDeck
