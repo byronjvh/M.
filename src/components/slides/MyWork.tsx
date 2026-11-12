@@ -37,7 +37,7 @@ const projects = [
     },
 ]
 
-export default function MyWork({ isCurrent }: SlideProps) {
+export default function MyWork({ isCurrent, setCurrentSlide, setCurrentMessage }: SlideProps) {
     const [enteredCards, setEnteredCards] = useState(() => projects.map(() => false))
 
     useEffect(() => {
@@ -46,12 +46,18 @@ export default function MyWork({ isCurrent }: SlideProps) {
         }
     }, [isCurrent])
 
+    const handleClick = (i: number) => {
+        if (!setCurrentSlide || !setCurrentMessage) return
+        setCurrentSlide(i)
+        setCurrentMessage("Quiero una página web para mi negocio.")
+    }
+
     return (
         <section className={styles.work}>
             <div className={styles["work-intro"]}>
                 <h2 className={styles["work-title"]}>Nuestro Trabajo</h2>
                 <p className={styles["work-description"]}>Cada negocio es diferente. Aquí puedes ver algunos de nuestros proyectos.</p>
-                <Button className={styles["work-button"]}>Quiero el mío</Button>
+                <Button className={styles["work-button"]} onClick={() => handleClick(5)}>Quiero el mío</Button>
             </div>
             <div className={styles["projects-list"]}>
                 {projects.map((project, index) => (

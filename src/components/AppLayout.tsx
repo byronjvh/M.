@@ -21,6 +21,7 @@ export default function AppLayout() {
         text: "#F5F3E9",
         textHover: "#ffe39c"
     });
+    const [currentMessage, setCurrentMessage] = useState<string>("Quiero una página web para mi negocio.");
 
     return (
         <div className={styles.layout}>
@@ -44,6 +45,7 @@ export default function AppLayout() {
                 setCurrentSlide={setCurrentSlide}
                 open={menuOpen}
                 setOpen={setMenuOpen}
+                setCurrentMessage={setCurrentMessage}
             />
 
             <main>
@@ -51,6 +53,8 @@ export default function AppLayout() {
                     currentSlide={currentSlide}
                     setCurrentSlide={setCurrentSlide}
                     setColorPalette={setColorPalette}
+                    currentMessage={currentMessage}
+                    setCurrentMessage={setCurrentMessage}
                 />
             </main>
 

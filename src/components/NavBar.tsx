@@ -12,6 +12,7 @@ interface NavbarProps {
     setCurrentSlide: Function;
     open: boolean;
     setOpen: (open: boolean) => void;
+    setCurrentMessage: (message: string) => void;
 }
 
 const NAVBAR_STATE = {
@@ -44,7 +45,7 @@ const LINKS = [
     }
 ]
 
-export default function Navbar({ currentSlide, colorPalette, setCurrentSlide, open, setOpen }: NavbarProps) {
+export default function Navbar({ currentSlide, colorPalette, setCurrentSlide, open, setOpen, setCurrentMessage }: NavbarProps) {
     const [navbarState, setNavbarState] = useState<NavbarState>(NAVBAR_STATE.DEFAULT)
     const [isMobile, setIsMobile] = useState(false)
 
@@ -144,7 +145,12 @@ export default function Navbar({ currentSlide, colorPalette, setCurrentSlide, op
                                     {LINKS.map((el, i) => (
                                         <motion.button
                                             key={el.name}
-                                            onClick={() => setCurrentSlide(i + 1)}
+                                            onClick={() => {
+                                                if (el.name === "Cotizar") {
+                                                    setCurrentMessage("Quiero una página web para mi negocio.")
+                                                }
+                                                return setCurrentSlide(i + 1)
+                                            }}
                                             className={`${styles.navLink} ${el.name === "Cotizar" ? styles.navButton : ""}`}
                                             animate={el.name === "Cotizar"
                                                 ? { color: colorPalette.onDark, backgroundColor: colorPalette.button, borderColor: colorPalette.button }

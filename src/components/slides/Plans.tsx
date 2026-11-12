@@ -3,7 +3,7 @@ import type { SlideProps } from "../SlideDeck"
 import styles from "./Plans.module.css"
 import { motion } from "motion/react"
 
-export default function Plans({ isCurrent }: SlideProps) {
+export default function Plans({ isCurrent, setCurrentSlide, setCurrentMessage }: SlideProps) {
     return (
         <section className={styles.plans}>
             <motion.h2 initial={{ rotate: -30, opacity: 0 }} animate={{ rotate: isCurrent ? 0 : -30, opacity: isCurrent ? 1 : 0 }} transition={{ delay: isCurrent ? 1 : 0, duration: 0.5, type: "spring", damping: 30, stiffness: 500 }} className={styles["plans-title"]}>Elige tu plan</motion.h2>
@@ -38,6 +38,10 @@ export default function Plans({ isCurrent }: SlideProps) {
                         color="#FFC83D"
                         hoverBackgroundColor="#333"
                         hoverColor="#F5F3E9"
+                        onClick={() => {
+                            setCurrentMessage?.("Estoy interesado en el plan básico.")
+                            setCurrentSlide?.(5)
+                        }}
                     >
                         Quiero mi web
                     </ActionButton>
@@ -64,7 +68,15 @@ export default function Plans({ isCurrent }: SlideProps) {
                             <p>Ideal para pequeñas y medianas empresas</p>
                         </li>
                     </ul>
-                    <ActionButton className={styles["plan-button"]}>Cotizar</ActionButton>
+                    <ActionButton
+                        className={styles["plan-button"]}
+                        onClick={() => {
+                            setCurrentMessage?.("Estoy interesado en el plan Negocio.")
+                            setCurrentSlide?.(5)
+                        }}
+                    >
+                        Cotizar
+                    </ActionButton>
                 </motion.article>
                 <motion.article initial={{ y: 40, opacity: 0 }} animate={{ y: isCurrent ? 0 : 40, opacity: isCurrent ? 1 : 0 }} transition={{ delay: isCurrent ? 0.7 : 0, duration: 0.5, type: "spring", damping: 25, stiffness: 300 }} className={styles.plan}>
                     <h3 className={styles["plan-title"]}>
@@ -88,7 +100,15 @@ export default function Plans({ isCurrent }: SlideProps) {
                             <p>Ideal para proyectos de gran alcance</p>
                         </li>
                     </ul>
-                    <ActionButton className={styles["plan-button"]}>Cotizar</ActionButton>
+                    <ActionButton
+                        className={styles["plan-button"]}
+                        onClick={() => {
+                            setCurrentMessage?.("Estoy interesado en un plan a medida.")
+                            setCurrentSlide?.(5)
+                        }}
+                    >
+                        Cotizar
+                    </ActionButton>
                 </motion.article>
             </div>
         </section>

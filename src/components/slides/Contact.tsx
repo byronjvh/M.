@@ -4,10 +4,19 @@ import Sticker from "../Sticker"
 import type { SlideProps } from "../SlideDeck"
 import styles from "./Contact.module.css"
 import Button from "../Button"
+import { useEffect, useState } from "react"
 
 const whatsappUrl = "https://wa.me/50672062036"
 
-export default function Contact({ isCurrent }: SlideProps) {
+export default function Contact({ isCurrent, currentMessage = "Quiero una página web para mi negocio." }: SlideProps) {
+    const [message, setMessage] = useState<string>("")
+
+    useEffect(() => {
+        if (currentMessage) {
+            setMessage(currentMessage)
+        }
+    }, [currentMessage])
+
     return (
         <section className={styles.contact}>
             <motion.div
@@ -63,7 +72,7 @@ export default function Contact({ isCurrent }: SlideProps) {
                 </div>
                 <label className={`${styles["form-field"]} ${styles["form-message"]}`}>
                     <span>Tu mensaje</span>
-                    <textarea name="message" rows={3} placeholder="Cuéntanos qué necesitas para tu negocio..." required />
+                    <textarea name="message" rows={3} placeholder="Cuéntanos qué necesitas para tu negocio..." required value={message} onChange={(e) => setMessage(e.target.value)} />
                 </label>
                 <ActionButton
                     type="submit"

@@ -6,6 +6,7 @@ import styles from "./ActionButton.module.css"
 interface ActionButtonProps {
     children: ReactNode
     type?: ButtonHTMLAttributes<HTMLButtonElement>["type"]
+    onClick?: ButtonHTMLAttributes<HTMLButtonElement>["onClick"]
     className?: string
     href?: string
     target?: string
@@ -20,6 +21,7 @@ interface ActionButtonProps {
 export default function ActionButton({
     children,
     type = "button",
+    onClick,
     className,
     href,
     target,
@@ -46,7 +48,7 @@ export default function ActionButton({
     }
 
     return (
-        <motion.button {...motionProps} type={type}>
+        <motion.button {...motionProps} type={type} onClick={onClick}>
             {children} <MoveRight size={20} />
         </motion.button>
     )

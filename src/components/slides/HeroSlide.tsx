@@ -25,7 +25,7 @@ export default function HeroSlide({ isCurrent, setCurrentSlide }: SlideProps) {
                 </p>
 
                 <div className={styles.buttons}>
-                    <Button />
+                    <Button onClick={() => handleClick(5)} />
                     <button className={styles.link} onClick={() => handleClick(2)}>
                         Ver cómo funciona
                     </button>

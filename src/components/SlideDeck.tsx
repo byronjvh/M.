@@ -11,7 +11,9 @@ import styles from "./SlideDeck.module.css";
 
 export interface SlideProps {
     isCurrent: boolean;
-    setCurrentSlide?: Function;
+    setCurrentSlide?: React.Dispatch<React.SetStateAction<number>>;
+    currentMessage?: string;
+    setCurrentMessage?: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export interface palette {
@@ -146,7 +148,15 @@ const slides: Slide[] = [
     },
 ];
 
-export default function SlideDeck({ currentSlide, setCurrentSlide, setColorPalette }: { currentSlide: number, setCurrentSlide: Function, setColorPalette: Function }) {
+interface SlideDeckProps {
+    currentSlide: number;
+    setCurrentSlide: React.Dispatch<React.SetStateAction<number>>;
+    setColorPalette: React.Dispatch<React.SetStateAction<palette>>;
+    currentMessage: string;
+    setCurrentMessage: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export default function SlideDeck({ currentSlide, setCurrentSlide, setColorPalette, currentMessage, setCurrentMessage }: SlideDeckProps) {
     const nextSlide = () => {
         setCurrentSlide((current: number) =>
             Math.min(current + 1, slides.length - 1)
@@ -213,7 +223,7 @@ export default function SlideDeck({ currentSlide, setCurrentSlide, setColorPalet
                         }}
                     >
                         <div className={styles.slideContent}>
-                            {cloneElement(slide.content, { isCurrent, setCurrentSlide })}
+                            {cloneElement(slide.content, { isCurrent, setCurrentSlide, currentMessage, setCurrentMessage })}
                         </div>
                     </motion.section>
                 );
