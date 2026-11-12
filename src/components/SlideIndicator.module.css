@@ -7,14 +7,26 @@
     flex-direction: column;
 }
 
+.labels {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 64px;
+}
+
 .text {
-    margin-left: 64px;
     margin-bottom: 16px;
     font-size: 18px;
     font-family: "Saira", sans-serif;
     font-weight: 600;
     letter-spacing: 1px;
     color: #f5f3e9;
+}
+
+.swipe {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .bar {
@@ -24,9 +36,17 @@
 }
 
 @media (max-width: 700px) {
+    .labels {
+        padding: 0 16px;
+    }
+
     .text {
-        margin-left: 16px;
         margin-bottom: 8px;
         font-size: 14px;
+    }
+
+    .swipe svg {
+        width: 16px;
+        height: 16px;
     }
 }
