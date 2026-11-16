@@ -125,8 +125,22 @@
 
     .buttons {
         flex-wrap: wrap;
-        gap: 16px;
-        margin-top: 20px;
+        gap: 10px;
+        margin-top: 16px;
+    }
+
+    .cta {
+        padding: 10px 16px;
+        font-size: 15px;
+    }
+
+    .cta svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .link {
+        font-size: 14px;
     }
 
     .cards {
@@ -135,5 +149,64 @@
         max-width: 280px;
         right: auto;
         scale: 1;
+    }
+}
+
+@media (max-width: 360px) {
+    .buttons {
+        gap: 6px;
+    }
+
+    .cta {
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+
+    .cta svg {
+        width: 15px;
+        height: 15px;
+    }
+
+    .link {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 700px) and (max-height: 700px) {
+    .content {
+        gap: 2px;
+    }
+
+    .description {
+        margin-top: 4px;
+        font-size: 13px;
+    }
+
+    .buttons {
+        margin-top: 4px;
+    }
+
+    .cta {
+        padding-block: 6px;
+        min-height: 44px;
+    }
+
+    .cards {
+        scale: 0.98;
+    }
+}
+
+@media (max-width: 360px) and (max-height: 700px) {
+    .text h1 {
+        font-size: 2.5rem;
+    }
+
+    .description {
+        font-size: 13px;
+    }
+
+    .cards {
+        flex-basis: 180px;
+        scale: 0.85;
     }
 }
