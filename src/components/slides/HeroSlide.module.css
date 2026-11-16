@@ -125,7 +125,7 @@
 
     .buttons {
         flex-wrap: wrap;
-        gap: 10px;
+        gap: 12px;
         margin-top: 16px;
     }
 
@@ -154,7 +154,7 @@
 
 @media (max-width: 360px) {
     .buttons {
-        gap: 6px;
+        gap: 12px;
     }
 
     .cta {
