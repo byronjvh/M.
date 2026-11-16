@@ -7,10 +7,17 @@
     width: max-content;
 }
 
+/* max font size clamp 6.5rem*/
+.text h1 {
+    font-size: clamp(2.6rem, 8vw, 6.5rem);
+    text-wrap: nowrap;
+}
+
 .description {
     max-width: 680px;
     margin-top: 16px;
     font-weight: 500;
+    font-size: clamp(14px, 1.5vw, 20px);
 }
 
 .buttons {
@@ -56,14 +63,53 @@
     width: 100%;
 }
 
+
 .cards {
     width: 100%;
     max-width: 480px;
     position: relative;
 }
 
+@media (max-width: 1280px) {
+    .cards {
+        right: 30px;
+    }
+}
+
+@media (max-width: 1140px) {
+    .cards {
+        scale: 0.7;
+    }
+}
+
+@media (max-width: 990px) {
+
+    .content {
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    .text {
+        width: 100%;
+        text-align: center;
+    }
+
+    .description {
+        margin-inline: auto;
+    }
+
+    .buttons {
+        justify-content: center;
+    }
+
+    .cards {
+        right: auto;
+        align-self: center;
+    }
+}
+
 @media (max-width: 700px) {
-    :global(h1) {
+    .text h1 {
         font-size: clamp(3rem, 13vw, 5rem);
         text-wrap: wrap;
     }
@@ -77,10 +123,6 @@
         width: 100%;
     }
 
-    .description {
-        font-size: 16px;
-    }
-
     .buttons {
         flex-wrap: wrap;
         gap: 16px;
@@ -89,7 +131,9 @@
 
     .cards {
         align-self: center;
-        flex: 0 0 260px;
-        max-width: 320px;
+        flex: 0 0 220px;
+        max-width: 280px;
+        right: auto;
+        scale: 1;
     }
 }

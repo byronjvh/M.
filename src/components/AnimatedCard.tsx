@@ -22,7 +22,7 @@ export default function AnimatedCard() {
                     <span></span>
                 </header>
                 <div>
-                    <Poop size={150} />
+                    <Poop size={130} />
                 </div>
             </div>
         </motion.div>

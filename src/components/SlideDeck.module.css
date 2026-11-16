@@ -28,6 +28,12 @@
     margin: 0 auto;
 }
 
+@media (min-width: 701px) {
+    .heroSlide .slideContent {
+        transform: translateY(calc(-1 * clamp(80px, 12vh, 120px)));
+    }
+}
+
 @media (max-width: 700px) {
     .slide {
         padding-inline: 12px;
