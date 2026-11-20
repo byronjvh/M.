@@ -145,16 +145,16 @@
 
     .project-link {
         top: 28px;
-        width: min(190px, 60vw);
-        left: calc(50% - min(95px, 30vw));
+        width: min(128px, 36vw);
+        left: calc(50% - min(64px, 18vw) + var(--mobile-card-offset, 0px));
     }
 
     .project-link:first-child {
-        left: calc(50% - min(95px, 30vw) - 1.5vw);
+        --mobile-card-offset: -24vw;
     }
 
     .project-link:last-child {
-        left: calc(50% - min(95px, 30vw) + 1.5vw);
+        --mobile-card-offset: 24vw;
     }
 
     .project-title {
