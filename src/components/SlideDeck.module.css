@@ -4,6 +4,7 @@
     height: 100dvh;
     overflow: hidden;
     perspective: 1800px;
+    touch-action: pan-x;
 }
 
 .slide {

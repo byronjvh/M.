@@ -157,50 +157,92 @@ interface SlideDeckProps {
 }
 
 export default function SlideDeck({ currentSlide, setCurrentSlide, setColorPalette, currentMessage, setCurrentMessage }: SlideDeckProps) {
-    const nextSlide = () => {
-        setCurrentSlide((current: number) =>
-            Math.min(current + 1, slides.length - 1)
-        );
-    };
-
-    const previousSlide = () => {
-        setCurrentSlide((current: number) =>
-            Math.max(current - 1, 0)
-        );
-    };
-
-    const isScrolling = useRef(false);
+    const deckRef = useRef<HTMLDivElement>(null);
+    const isNavigating = useRef(false);
 
     useEffect(() => {
-        const handleWheel = (event: WheelEvent) => {
-            if (isScrolling.current || event.deltaY === 0) return;
+        let touchStart: { x: number; y: number } | null = null;
+        let unlockTimeout: ReturnType<typeof setTimeout> | null = null;
 
-            isScrolling.current = true;
+        const navigate = (direction: 1 | -1) => {
+            if (isNavigating.current) return;
 
-            if (event.deltaY > 0) {
-                nextSlide();
-            } else {
-                previousSlide();
-            }
+            isNavigating.current = true;
+            setCurrentSlide((current) =>
+                Math.max(0, Math.min(current + direction, slides.length - 1))
+            );
 
-            setTimeout(() => {
-                isScrolling.current = false;
+            unlockTimeout = setTimeout(() => {
+                isNavigating.current = false;
+                unlockTimeout = null;
             }, 500);
         };
 
+        const handleWheel = (event: WheelEvent) => {
+            if (event.deltaY === 0 || Math.abs(event.deltaY) < Math.abs(event.deltaX)) return;
+            navigate(event.deltaY > 0 ? 1 : -1);
+        };
+
+        const handleTouchStart = (event: TouchEvent) => {
+            if (event.touches.length !== 1) {
+                touchStart = null;
+                return;
+            }
+
+            const target = event.target;
+            if (
+                target instanceof Element &&
+                target.closest("a, button, input, textarea, select, [contenteditable='true'], [data-no-slide-swipe]")
+            ) {
+                touchStart = null;
+                return;
+            }
+
+            const touch = event.touches[0];
+            touchStart = touch ? { x: touch.clientX, y: touch.clientY } : null;
+        };
+
+        const handleTouchEnd = (event: TouchEvent) => {
+            if (!touchStart) return;
+
+            const start = touchStart;
+            const touch = event.changedTouches[0];
+            touchStart = null;
+            if (!start || !touch) return;
+
+            const deltaX = touch.clientX - start.x;
+            const deltaY = touch.clientY - start.y;
+
+            if (Math.abs(deltaY) < 50 || Math.abs(deltaY) <= Math.abs(deltaX) * 1.2) return;
+            navigate(deltaY < 0 ? 1 : -1);
+        };
+
+        const handleTouchCancel = () => {
+            touchStart = null;
+        };
+
         window.addEventListener("wheel", handleWheel, { passive: true });
+        const deck = deckRef.current;
+        deck?.addEventListener("touchstart", handleTouchStart, { passive: true });
+        deck?.addEventListener("touchend", handleTouchEnd, { passive: true });
+        deck?.addEventListener("touchcancel", handleTouchCancel, { passive: true });
 
         return () => {
             window.removeEventListener("wheel", handleWheel);
+            deck?.removeEventListener("touchstart", handleTouchStart);
+            deck?.removeEventListener("touchend", handleTouchEnd);
+            deck?.removeEventListener("touchcancel", handleTouchCancel);
+            if (unlockTimeout !== null) clearTimeout(unlockTimeout);
+            isNavigating.current = false;
         };
-    }, []);
+    }, [setCurrentSlide]);
 
     useEffect(() => {
         setColorPalette(slides[currentSlide].palette)
     }, [currentSlide])
 
     return (
-        <div className={styles.deck}>
+        <div ref={deckRef} className={styles.deck}>
             {slides.map((slide, index) => {
                 const isCurrent = index === currentSlide;
                 const isPrevious = index < currentSlide;
