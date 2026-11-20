@@ -176,77 +176,161 @@
 
 @media (max-width: 600px) {
     .contact {
-        gap: 14px;
-        padding: 16px 0;
+        justify-content: center;
+        gap: 8px;
+        padding: 6px 0;
     }
 
     .contact-title {
         max-width: 70%;
-        font-size: clamp(4rem, 16vw, 6rem);
+        font-size: clamp(3rem, 12vw, 4rem);
     }
 
     .contact-description {
         max-width: 75%;
-        margin-top: 10px;
-        font-size: 15px;
+        margin-top: 6px;
+        font-size: 13px;
+        line-height: 1.15;
     }
 
     .contact-intro .contact-sticker {
-        top: 4px;
+        top: 0;
         right: 0;
-        width: 92px;
-        height: 92px;
-        padding: 12px;
-        font-size: 19px;
+        width: 76px;
+        height: 76px;
+        padding: 9px;
+        font-size: 16px;
     }
 
     .contact-whatsapp {
         position: static;
-        margin-top: 14px;
+        margin-top: 8px;
+        gap: 6px;
     }
 
     .contact-whatsapp span {
         display: block;
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .contact-whatsapp-link {
-        padding: 12px 16px;
-        font-size: 14px;
+        padding: 6px 10px;
+        font-size: 11px;
+    }
+
+    .contact-whatsapp-link svg {
+        width: 16px;
+        height: 16px;
     }
 
     .contact-form {
-        gap: 12px;
-        padding: 16px;
+        gap: 2px;
+        padding: 8px;
     }
 
     .form-title {
-        font-size: 32px;
+        font-size: 24px;
     }
 
     .form-contact-fields {
-        gap: 10px;
+        gap: 6px;
     }
 
     .form-field {
-        font-size: 12px;
+        gap: 4px;
+        font-size: 11px;
     }
 
     .form-field input,
     .form-field textarea {
-        padding: 9px;
-        font-size: 14px;
+        padding: 5px;
+        font-size: 12px;
     }
 
     .form-field input {
-        min-height: 42px;
+        min-height: 30px;
     }
 
     .form-field textarea {
-        min-height: 72px;
+        min-height: 40px;
     }
 
     .form-note {
+        display: none;
+    }
+
+    .contact-form > button {
+        min-height: 34px;
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+
+    .contact-form > button svg {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+@media (max-width: 700px) and (max-height: 620px) {
+    .contact {
+        gap: 4px;
+        padding: 4px 0;
+    }
+
+    .contact-title {
+        font-size: 2.5rem;
+    }
+
+    .contact-description {
+        margin-top: 4px;
+        font-size: 12px;
+    }
+
+    .contact-whatsapp {
+        margin-top: 4px;
+        gap: 4px;
+    }
+
+    .contact-whatsapp span {
+        display: none;
+    }
+
+    .contact-whatsapp-link {
+        padding: 4px 8px;
+        font-size: 10px;
+    }
+
+    .contact-form {
+        gap: 1px;
+        padding: 6px;
+    }
+
+    .form-title {
+        font-size: 20px;
+    }
+
+    .form-field {
+        gap: 2px;
+        font-size: 10px;
+    }
+
+    .form-field input,
+    .form-field textarea {
+        padding: 4px;
+        font-size: 11px;
+    }
+
+    .form-field input {
+        min-height: 26px;
+    }
+
+    .form-field textarea {
+        min-height: 34px;
+    }
+
+    .contact-form > button {
+        min-height: 32px;
+        padding: 4px 8px;
         font-size: 11px;
     }
 }

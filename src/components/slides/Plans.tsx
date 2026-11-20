@@ -9,14 +9,14 @@ export default function Plans({ isCurrent, setCurrentSlide, setCurrentMessage }:
             <motion.h2 initial={{ rotate: -30, opacity: 0 }} animate={{ rotate: isCurrent ? 0 : -30, opacity: isCurrent ? 1 : 0 }} transition={{ delay: isCurrent ? 1 : 0, duration: 0.5, type: "spring", damping: 30, stiffness: 500 }} className={styles["plans-title"]}>Elige tu plan</motion.h2>
             <div className={styles["plans-options"]}>
                 <motion.article initial={{ y: 40, opacity: 0 }} animate={{ y: isCurrent ? 0 : 40, opacity: isCurrent ? 1 : 0 }} transition={{ delay: isCurrent ? 0.5 : 0, duration: 0.5, type: "spring", damping: 25, stiffness: 300 }} className={`${styles["plan"]} ${styles["highlighted"]}`}>
-                    <span className={styles["plan-tag"]}>Empieza aquí</span>
-                    <h3 className={styles["plan-title"]}>
-                        Básico
-                    </h3>
-                    <span className={styles["plan-price-tag"]}>
-                        * Desde
-                    </span>
-                    <p className={styles["plan-price"]}>₡0 <span>después ₡15.900/mes</span></p>
+                    <div className={styles["plan-info"]}>
+                        <span className={styles["plan-tag"]}>Empieza aquí</span>
+                        <h3 className={styles["plan-title"]}>Básico</h3>
+                    </div>
+                    <div className={styles["plan-pricing"]}>
+                        <span className={styles["plan-price-tag"]}>* Desde</span>
+                        <p className={styles["plan-price"]}>₡0 <span>después ₡15.900/mes</span></p>
+                    </div>
                     <ul className={styles["plan-features"]}>
                         <li>
                             <p>Demostración gratis.</p>
@@ -47,13 +47,13 @@ export default function Plans({ isCurrent, setCurrentSlide, setCurrentMessage }:
                     </ActionButton>
                 </motion.article>
                 <motion.article initial={{ y: 40, opacity: 0 }} animate={{ y: isCurrent ? 0 : 40, opacity: isCurrent ? 1 : 0 }} transition={{ delay: isCurrent ? 0.6 : 0, duration: 0.5, type: "spring", damping: 25, stiffness: 300 }} className={styles.plan}>
-                    <h3 className={styles["plan-title"]}>
-                        Negocio
-                    </h3>
-                    <span className={styles["plan-price-tag"]}>
-                        * Desde
-                    </span>
-                    <p className={styles["plan-price"]}>₡109.900 <span>después ₡35.000/mes</span></p>
+                    <div className={styles["plan-info"]}>
+                        <h3 className={styles["plan-title"]}>Negocio</h3>
+                    </div>
+                    <div className={styles["plan-pricing"]}>
+                        <span className={styles["plan-price-tag"]}>* Desde</span>
+                        <p className={styles["plan-price"]}>₡109.900 <span>después ₡35.000/mes</span></p>
+                    </div>
                     <ul className={styles["plan-features"]}>
                         <li>
                             <p>Diseño exclusivo para tu negocio</p>
@@ -79,13 +79,13 @@ export default function Plans({ isCurrent, setCurrentSlide, setCurrentMessage }:
                     </ActionButton>
                 </motion.article>
                 <motion.article initial={{ y: 40, opacity: 0 }} animate={{ y: isCurrent ? 0 : 40, opacity: isCurrent ? 1 : 0 }} transition={{ delay: isCurrent ? 0.7 : 0, duration: 0.5, type: "spring", damping: 25, stiffness: 300 }} className={styles.plan}>
-                    <h3 className={styles["plan-title"]}>
-                        A medida
-                    </h3>
-                    <span className={styles["plan-price-tag"]}>
-                        * Desde
-                    </span>
-                    <p className={styles["plan-price"]}>₡290.000 <span> después ₡70.000/mes</span></p>
+                    <div className={styles["plan-info"]}>
+                        <h3 className={styles["plan-title"]}>A medida</h3>
+                    </div>
+                    <div className={styles["plan-pricing"]}>
+                        <span className={styles["plan-price-tag"]}>* Desde</span>
+                        <p className={styles["plan-price"]}>₡290.000 <span>después ₡70.000/mes</span></p>
+                    </div>
                     <ul className={styles["plan-features"]}>
                         <li>
                             <p>Desarrollo totalmente personalizado</p>

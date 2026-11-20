@@ -109,23 +109,39 @@
 }
 
 @media (max-width: 700px) {
+    .problem {
+        justify-content: center;
+        gap: 12px;
+    }
+
     .problem-title {
-        font-size: clamp(3.75rem, 16vw, 5rem);
+        font-size: clamp(2.5rem, 11vw, 3.5rem);
     }
 
     .problem-decoration {
-        padding: 12px;
+        padding: 6px 10px;
     }
 
     .problem-description {
-        font-size: 18px;
+        font-size: 14px;
+        line-height: 1.15;
+    }
+
+    .problem-cards {
+        gap: 6px;
     }
 
     .problem-card p {
-        font-size: 18px;
+        font-size: 13px;
+        line-height: 1.1;
     }
 
     .problem-card span {
-        font-size: 48px;
+        font-size: 34px;
+    }
+
+    .problem-card {
+        gap: 8px;
+        padding: 8px 10px;
     }
 }

@@ -135,33 +135,66 @@
 
 @media (max-width: 600px) {
     .work-title {
-        font-size: clamp(3.5rem, 15vw, 5rem);
+        font-size: clamp(2.75rem, 11vw, 3.5rem);
     }
 
     .work-description {
-        font-size: 16px;
+        font-size: 14px;
+        line-height: 1.15;
     }
 
     .project-link {
         top: 28px;
-        width: min(220px, 70vw);
-        left: calc(50% - min(110px, 35vw));
+        width: min(190px, 60vw);
+        left: calc(50% - min(95px, 30vw));
     }
 
     .project-link:first-child {
-        left: calc(50% - min(110px, 35vw) - 1.5vw);
+        left: calc(50% - min(95px, 30vw) - 1.5vw);
     }
 
     .project-link:last-child {
-        left: calc(50% - min(110px, 35vw) + 1.5vw);
+        left: calc(50% - min(95px, 30vw) + 1.5vw);
     }
 
     .project-title {
-        font-size: 24px;
+        font-size: 18px;
+    }
+
+    .project-text {
+        padding: 6px 8px;
+    }
+
+    .project-text p {
+        font-size: 10px;
+    }
+
+    .project-header {
+        height: 24px;
+        padding: 8px;
+    }
+
+    .project-image {
+        aspect-ratio: 16 / 10;
     }
 
     .projects-list {
-        flex-basis: 340px;
-        height: 340px;
+        flex-basis: 250px;
+        height: 250px;
+    }
+
+    .work-intro {
+        gap: 6px;
+    }
+
+    .work-button {
+        margin-top: 4px;
+        padding: 10px 16px;
+        font-size: 15px;
+    }
+
+    .work-button svg {
+        width: 18px;
+        height: 18px;
     }
 }

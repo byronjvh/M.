@@ -207,7 +207,7 @@ export default function SlideDeck({ currentSlide, setCurrentSlide, setColorPalet
                 return (
                     <motion.section
                         key={slide.id}
-                        className={`${styles.slide} ${slide.id === "hero" ? styles.heroSlide : ""}`}
+                        className={`${styles.slide} ${slide.id === "hero" ? styles.heroSlide : styles.compactSlide}`}
                         style={{
                             backgroundColor: slide.palette.background,
                             zIndex: isPrevious ? 20 : slides.length - index,
